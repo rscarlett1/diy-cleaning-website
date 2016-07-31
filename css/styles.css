@@ -1,0 +1,294 @@
+#logo{
+	position: relative;
+	/*padding-top: 10px;*/
+}
+
+.collapse.navbar-collapse{
+	padding: 0px;
+}
+
+nav ul.nav.navbar-nav{
+	width: 100vw;
+
+}
+
+nav ul.nav.navbar-nav li{
+	width: 25%;
+	padding: 2px;
+	margin: 0;
+}
+
+nav ul.nav.navbar-nav li{
+	padding-left: 100px;
+}
+
+
+.dropdown-toggle.diy-menu{
+	padding: 15px;
+	margin: 0;
+}
+
+#follow-us{
+	font-size: 15px;
+	padding-top: 5px;
+	padding-left: 230px;
+}
+
+#icon{
+	font-size: 35px;
+	padding-left: 230px;
+}
+
+#search{
+	padding-left: 230px;
+}
+
+
+#triangle{
+	position: absolute;
+  	right: 1px;
+  	top: 0px;
+  	padding-top: 0px;
+
+}
+
+#member{
+	margin-top: 40px;
+	margin-left: 300px;
+	
+}	
+
+.diy-menu{
+	margin: 10px;
+	margin-left: 100px;
+	padding-right: 15px;
+	font-size: 20px;
+	
+}
+
+.diy-menu a{
+	font color: #81c2e2;
+	font-weight: 20px;
+}
+
+.dropdown-menu li{
+	margin-left: 100px;
+	padding-left: 5px;
+}
+
+/*.slider-images{
+	text-align: center;
+
+}*/
+
+.carousel-inner{
+	margin: 0 auto;
+}
+
+
+#heading{
+	color: #ffdd00;
+	text-align: center;
+}
+
+#sub-post-heading{
+	font-size: 18px;
+	margin: 0;
+	padding: 13px;
+}
+
+.why-change{
+	padding-left: 50px;
+	padding-right: 40px;
+	/*padding-bottom: 20px;*/
+}
+
+#paragraph-intro{
+	text-align: justify;
+}
+
+.post-image{
+	padding-left: 40px;
+}
+
+#post-content{
+	background-color: #e7ebed;
+	padding: 8px 10px;
+	text-align: justify;
+}
+
+#advertising{
+	padding-left: 50px;
+}
+
+.post-padding{
+	padding-bottom: 40px;
+}
+
+#footer-background{
+	background-color: #c0e4f5;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-radius: 7px;
+}
+
+#address{
+	padding-left: 60px;
+	font-size: 18px;
+}
+
+#navigate{
+	padding-left: 20px;
+	font-size: 18px;
+}
+
+#subscribe strong{
+	font-size: 18px;
+}
+
+.form-control{
+	width: 350px;
+}
+
+.form-group{
+	padding-left: 0px;
+}
+
+#subscribe button{
+	background-color: #81c2e2;
+	border-radius: 10px;
+}
+
+.center-image{
+	text-align: center;
+	padding-bottom: 40px;
+}
+
+#environment{
+	padding-left: 250px;
+
+}
+
+#about-com{
+	padding-top: 40px;
+	padding-left: 100px;
+	background-color: #e7ebed;
+	padding-bottom: 20px;
+}
+
+#about-com h1{
+	margin: 0px;
+	padding-bottom: 10px;
+	text-align: center;
+	color: #ffdd00;
+}
+
+#contact-heading h1{
+	color: #ffdd00;
+}
+
+#contact-heading p{
+	padding: 10px;
+}
+
+
+.btn{
+	background-color: #81c2e2;
+	border-radius: 10px;
+}
+
+#contact-address{
+	font-size: 20px;
+}
+
+.images-wwyltc{
+	margin: 0 auto;
+}
+
+
+
+#bathroom-image{
+	margin: 0 auto;
+	background-image: url(../img/wwyltc/bathroom.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity: 1;
+}
+
+#kitchen-image{
+	padding-left: 200px;
+	background-image: url(../img/wwyltc/kitchen.png);
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 400px 400px;
+	opacity: 1;
+}
+
+#laundry-image{
+	background-image: url(../img/wwyltc/laundry.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 400px 400px;
+	opacity: 1;
+}
+
+#garage-image{
+	padding-left: 300px;
+	background-image: url(../img/wwyltc/garage.png);
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 400px 400px;
+	opacity: 1;
+}
+
+#other-areas-image{
+	padding: 80px;
+	background-image: url(../img/wwyltc/bedroom.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 400px 400px;
+}
+
+
+.image-height{
+	margin: 0 auto;
+	margin-top: 220px;
+	margin-bottom: 220px;
+}
+
+.bgimages:hover{
+	opacity: 0.8;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+#move-heading{
+	padding-left: 400px;
+}
+
+#query-form{
+	background-color: #e7ebed;
+	padding: 150px; 
+}
+
+#drop-box{
+	padding: 300px;
+}
+
+#drop-box label{
+	display: block;
+}
+
+.enter-details{
+	padding-bottom: 20px;
+}
+
+#sign-up-padding{
+	padding-left: 300px;
+	padding-bottom: 20px;
+}
+
+
+
+
+
+
