@@ -1,4 +1,4 @@
-
+<main>
 	<div class="row">
 		 <div class="col-xs-4" id="about-com">
 
@@ -29,5 +29,4 @@
 					</div>
 				</div>	
 		</div>
-
 	</div>

@@ -91,8 +91,10 @@
 	</nav>
 
 
-<footer>	
 
+</main>
+
+<footer>	
 
 	<div class="row fluid-container" id="footer-background">
 			

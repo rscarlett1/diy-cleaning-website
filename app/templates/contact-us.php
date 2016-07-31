@@ -1,3 +1,4 @@
+<main>	
 	<div class="row">
 			 <div id="contact-heading" class="col-xs-12 center-image">
 			 	<h1>Contact Us</h1>
