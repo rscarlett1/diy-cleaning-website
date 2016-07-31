@@ -1,3 +1,31 @@
-<!DOCTYPE html>
+	</div> <!-- container -->
+
+		<div class="row container images-wwyltc" >
+			 <div class="col-xs-6 center-image bgimages" id="bathroom-image">
+				<h1 class="image-height">Bathroom</h1>
+			</div>
+
+			<div class="col-xs-6 center-image bgimages" id="kitchen-image">
+				<h1 class="image-height">Kitchen</h1>
+			</div>
+		</div>
+
+		<div class="row container images-wwyltc">
+
+			<div class="col-xs-6 center-image" id="laundry-image">
+			<h1 class="image-height ">Laundry</h1>
+			</div>
+			
+			<div class="col-xs-6 center-images" id="garage-image">
+			<h1 class="image-height">Garage</h1>
+			</div>
+		</div>
+
+		<div class="row container images-wwyltc">
+			<div class="col-xs-12 bgimages" id="other-areas-image">
+			<h1 class="image-height" id="move-heading">Other Areas</h1>
+			</div>
+		</div>
+	</div>
 
 <!--what-to-clean goes here -->
