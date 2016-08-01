@@ -2,9 +2,6 @@
 //make the vendor folder available to use
 require 'vendor/autoload.php';
 
-//Instantiate (create instance of) Plates library
-$plates = new League\Plates\Engine('app/templates');
-
 // load appripriate page
 
 //Has the user requested a page?

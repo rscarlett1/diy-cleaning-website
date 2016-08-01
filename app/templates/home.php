@@ -1,4 +1,13 @@
-<?php $this->layout('master') ?>
+<?php 
+
+	$this->layout('master', [
+		'title'=>'DIY Home Cleaning Products'
+		'desc'=>'Find out how easy it is to make your own home made cleaning products'
+
+
+	]) 
+
+?>
 
 <main>	
 	<div class="container">
