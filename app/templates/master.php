@@ -171,7 +171,11 @@
 
 		  <div class="enter-details">
 		    <label><b>Username</b></label>
-		    <input type="text" placeholder="Enter Username" name="username" required>
+		    <input type="text" placeholder="Email Address" name="username" required>
+
+			<?php if(isset($emailMessage) ) : ?>
+			<p><?= $emailMessage ?></p>	
+			<?php endif; ?>
 
 		    <label><b>Password</b></label>
 		    <input type="password" placeholder="Enter Password" name="passsword" required>

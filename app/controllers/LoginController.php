@@ -3,6 +3,7 @@
 class LoginController;
 
 //Properties
+private $emailMessage;
 
 //Constructor
 	public function __construct(){
@@ -16,13 +17,13 @@ class LoginController;
 	//echo '</pre>';
 
 		if( isset($_POST['new-account']) ) {
-
+			$this->validateRegistrationForm();
 		}
 
-}
+	}
 
-//Methods (functions)
-public function registerAccount() {
+	//Methods (functions)
+	public function registerAccount() {
 
 	//Validate the users data
 
@@ -35,10 +36,35 @@ public function registerAccount() {
 	//If successful, log user in and redirect to recipes pages
 
 
-}
+	}
 
-public function buildHTML() {
+	public function buildHTML() {
+		//Instantiate (create instance of) Plates library
+	$plates = new League\Plates\Engine('app/templates');
 
+	//Prepare the container for data
+	$data = [];
+
+	if($this->emailMessage != ''){
+		$data['emailMessage'] = $this->emailMessage; 
+	}
+
+	echo $plates->render('login', $data);
+
+	}
+
+	private function validateRegistrationForm(){
+
+		//make sure the eail has been provided and is valid
+		if( $_POST['email'] =='' ) {
+			//E-mail is invalid
+			$this->emailMessage = 'Invalid E-Mail'
+
+
+		}
+
+
+	}
 
 }
 
