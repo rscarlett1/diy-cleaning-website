@@ -53,7 +53,7 @@
 				<div class="col-md-4">
 				
 					<div>
-						<p><a href "#" data-toggle="modal" data-target=".signup-modal">
+						<p><a href "" data-toggle="modal" data-target=".signup-modal">
 						<img id="triangle" src="img/trianglepng.png" width="175" height="200" alt=""></a></p>
 					</div>
 
@@ -166,8 +166,8 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
-    	<form id="drop-box" action="action_page.php">
-    		<h2>Sign In</h2>
+    	<form id="drop-box" action="login.php?page=login" method="post">
+    		<h2>Log In</h2>
 
 		  <div class="enter-details">
 		    <label><b>Username</b></label>
@@ -194,7 +194,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
-     <form id="sign-up-padding">
+     <form id="sign-up-padding" action="sign-up.php?page=signup" method="post">
 
      	<h2>Sign Up</h2>
      	<div class="form-group">
@@ -216,7 +216,6 @@
 		    <label for="exampleInputPassword1">Password</label>
 		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 		  </div>
-		  
 		  
 		  <button type="submit" class="btn btn-default">Submit</button>
 	</form>
