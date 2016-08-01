@@ -1,3 +1,2 @@
-<!DOCTYPE html>
+<?php
 
-<!--Index php page goes here -->
