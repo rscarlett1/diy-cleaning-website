@@ -1,3 +1,6 @@
+
+<?php $this->layout('master') ?>
+
 <main>
 	<div class="row">
 		 <div class="col-xs-4" id="about-com">

@@ -1,3 +1,5 @@
+<?php $this->layout('master') ?>
+
 <main>	
 	<div class="container">
 		<main>

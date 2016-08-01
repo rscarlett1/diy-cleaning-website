@@ -1,3 +1,6 @@
+<?php $this->layout('master') ?>
+
+
 <main>	
 	<div class="row">
 			 <div id="contact-heading" class="col-xs-12 center-image">

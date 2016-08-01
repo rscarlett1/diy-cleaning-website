@@ -94,6 +94,8 @@
 
 </main>
 
+<?php echo $this->section('content') ?>
+
 <footer>	
 
 	<div class="row fluid-container" id="footer-background">
