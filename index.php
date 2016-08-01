@@ -24,37 +24,46 @@ switch($page {
 
 	//Home page
 	case 'home':
-		echo $plates->render('home');
+		require 'app/controllers/HomeController.php';
+		$controller = new HomeController();
 	break;
 
 	//About us page
 	case 'about-us':
-		echo $plates->render('about-us');
+		require 'app/controllers/AboutUsController.php';
+		$controller = new AboutUsController();
 	break;
 
 	//what to clean page
 	case 'what-to-clean':
-		echo $plates->render('what-to-clean');
+		require 'app/controllers/WhatToCleanController.php';
+		$controller = new WhatToCleanController();
 	break;
 
 	//contact
 	case 'contact-us':
-		echo $plates->render('contact-us');
+		require 'app/controllers/ContactUsController.php';
+		$controller = new ContactUsController();
 	break;
 
 	case 'recipes':
-		echo $plates->render('recipes');
+		require 'app/controllers/ContactUsController.php';
+		$controller = new ContactUsController();
 	break;
 
 	case 'login':
-		echo $plates->render('recipes');
+		require 'app/controllers/LoginController.php';
+		$controller = new LoginController();
 	break;
 
 	case 'sign-up':
-		echo $plates->render('recipes');
+		require 'app/controllers/SignUpController.php';
+		$controller = new SignUpController();
 	break;
 
 	default:
 		echo $plates->render('error 404');
 	break;
 }
+
+$controller->buildHTML();
