@@ -5,6 +5,10 @@ class HomeController;
 //Properties
 
 //Constructor
+public function __construct(){
+
+
+}
 
 //Methods (functions)
 
