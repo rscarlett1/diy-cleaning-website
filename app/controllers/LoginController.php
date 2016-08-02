@@ -4,9 +4,14 @@ class LoginController;
 
 //Properties
 private $emailMessage;
+private $passwordMessage;
+private $dbc;
 
 //Constructor
-	public function __construct(){
+	public function __construct($dbc){
+
+	//Save the database comnnection for later
+	$this->dbc = $dbc;	
 
 	//If the user has submmitted the registration form
 
@@ -70,7 +75,12 @@ private $emailMessage;
 
 		if( $totalErrors == 0 ) {
 
-			
+			//validation passed!
+
+			//Filter user data before using it in a query
+			$filteredEmail = $this->dbc->real_escape_string($_POST['email'] );
+
+
 		}
 
 

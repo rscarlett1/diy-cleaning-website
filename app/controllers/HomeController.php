@@ -3,9 +3,11 @@
 class HomeController {
 
 	//Properties
+	private $emailMessage;
+	private $dbc;
 
 	//Constructor
-	public function __construct(){
+	public function __construct($dbc){
 
 
 	}
