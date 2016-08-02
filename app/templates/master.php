@@ -166,19 +166,23 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
-    	<form id="drop-box" action="login.php?page=login" method="post">
+    	<form id="drop-box" action="what-to-clean.php?page=what-to-clean" method="post">
     		<h2>Log In</h2>
 
 		  <div class="enter-details">
-		    <label><b>Username</b></label>
-		    <input type="text" placeholder="Email Address" name="username" required>
+		    <label><b>Email</b></label>
+		    <input type="text" placeholder="Email Address" name="email" value="<?= isset($_POST['email']) ? $_POST ['email'] : '' ?>">
 
 			<?php if(isset($emailMessage) ) : ?>
 			<p><?= $emailMessage ?></p>	
 			<?php endif; ?>
 
 		    <label><b>Password</b></label>
-		    <input type="password" placeholder="Enter Password" name="passsword" required>
+		    <input type="password" placeholder="Enter Password" name="passsword" value="<?= isset($_POST['password']) ? $_POST ['password'] : '' ?>">
+			
+			<?php if(isset($passwordMessage) ) : ?>
+			<p><?= $passwordMessage ?></p>	
+			<?php endif; ?>
 
 		    <button type="submit" name="new-account">Login</button>
 		    <input type="checkbox" checked="checked"> Remember me
@@ -198,7 +202,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
-     <form id="sign-up-padding" action="sign-up.php?page=signup" method="post">
+     <form id="sign-up-padding" action="what-to-clean.php?page=what-to-clean" method="post">
 
      	<h2>Sign Up</h2>
      	<div class="form-group">
@@ -221,7 +225,7 @@
 		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 		  </div>
 		  
-		  <button type="submit" class="btn btn-default">Submit</button>
+		  <button type="submit" name="" class="btn btn-default">Submit</button>
 	</form>
     </div>
   </div>

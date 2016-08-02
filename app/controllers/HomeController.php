@@ -1,21 +1,23 @@
 <?php
 
-class HomeController;
+class HomeController {
 
-//Properties
+	//Properties
 
-//Constructor
-public function __construct(){
+	//Constructor
+	public function __construct(){
 
 
-}
+	}
 
-//Methods (functions)
+	//Methods (functions)
 
-public function buildHTML() {
+	public function buildHTML() {
 
-	//Instantiate (create instance of) Plates library
-	$plates = new League\Plates\Engine('app/templates');
+		//Instantiate (create instance of) Plates library
+		$plates = new League\Plates\Engine('app/templates');
 
-	echo $plates->render('home');
+		echo $plates->render('home');
+	}
+
 }

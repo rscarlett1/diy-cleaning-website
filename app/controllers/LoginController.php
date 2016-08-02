@@ -55,12 +55,22 @@ private $emailMessage;
 
 	private function validateRegistrationForm(){
 
+		$totalErrors = 0;
+
 		//make sure the eail has been provided and is valid
 		if( $_POST['email'] =='' ) {
 			//E-mail is invalid
 			$this->emailMessage = 'Invalid E-Mail'
+		}
 
+		if(strlen($_POST['password']) < 8) {
+			$this->passwordMessage = 'Must be at least 8 characters';
+			$totalErrors++;
+		}
 
+		if( $totalErrors == 0 ) {
+
+			
 		}
 
 

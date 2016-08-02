@@ -5,19 +5,24 @@ require 'vendor/autoload.php';
 // load appripriate page
 
 //Has the user requested a page?
-if( isset($_GET['page']) ){
+// if( isset($_GET['page']) ){
 
-	//Requested page
-	$page = $_GET['page'];
+// 	//Requested page
+// 	$page = $_GET['page'];
 
-} else {
+// } else {
 
-	//home page
-	$page = 'home';
-}
+// 	//home page
+// 	$page = 'home';
+// }
 
+$page = isset( $_GET ['page'] ) ? $_GET['page']  : 'home';
 //Load appropriate files based on page
-switch($page {
+
+//Connect to the database
+$dbc = new mysqli('localhost', 'root', '', 'diy_cleaning_website');
+
+switch($page) {
 
 	//Home page
 	case 'home':
