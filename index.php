@@ -5,16 +5,16 @@ require 'vendor/autoload.php';
 // load appripriate page
 
 //Has the user requested a page?
-// if( isset($_GET['page']) ){
+if( isset($_GET['page']) ){
 
-// 	//Requested page
-// 	$page = $_GET['page'];
+	//Requested page
+	$page = $_GET['page'];
 
-// } else {
+} else {
 
-// 	//home page
-// 	$page = 'home';
-// }
+	//home page
+	$page = 'home';
+}
 
 
 
@@ -58,7 +58,7 @@ switch($page) {
 		$controller = new LoginController($dbc);
 	break;
 
-	case 'sign-up':
+	case 'signup':
 		require 'app/controllers/SignUpController.php';
 		$controller = new SignUpController($dbc);
 	break;

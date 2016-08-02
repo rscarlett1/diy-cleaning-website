@@ -1,0 +1,151 @@
+<?php
+
+class SignUpController;
+
+//Properties
+private $firstnameMessage;
+private $lastnameMessage;
+private $emailMessage;
+private $passwordMessage;
+
+private $dbc;
+
+//Constructor
+	public function __construct($dbc){
+
+	//Save the database comnnection for later
+	$this->dbc = $dbc;	
+
+	//If the user has submmitted the registration form
+
+	//To see if the post array is working  and every input has a nome if not working	
+	
+	//echo 'pre';
+	//print_r( $_POST );
+	//echo '</pre>';
+
+		if( isset($_POST['signup-submit']) ) {
+			$this->validateRegistrationForm();
+		}
+	}
+
+	//Methods (functions)
+	public function registerAccount() {
+
+	//Validate the users data
+
+	//check the database to see if emails is in use
+
+	//check the strength of the password
+
+	//Register the account OR show error messages
+
+	//If successful, log user in and redirect to recipes pages
+
+
+	}
+
+	public function buildHTML() {
+		//Instantiate (create instance of) Plates library
+	$plates = new League\Plates\Engine('app/templates');
+
+	//Prepare the container for data
+	$data = [];
+
+	if($this->emailMessage != ''){
+		$data['emailMessage'] = $this->emailMessage; 
+	}
+
+	echo $plates->render('signup', $data);
+
+	}
+
+	private function validateRegistrationForm(){
+
+		$totalErrors = 0;
+
+		//start first name
+
+		//Make sure First name is is valid
+		if( strlen($_POST['first-name']) > 50 ) {
+			$this->data['firstNameMessage'] = '<p>Must be at most 50 characters</p>';
+			$totalErrors++;
+		}
+
+
+		//start last name
+
+		// Validate the last name
+		if( strlen($_POST['last-name']) > 50 ) {
+			$this->data['lastNameMessage'] = '<p>Must be at most 50 characters</p>';
+			$totalErrors++;
+		}
+
+		// If totalErrors is still 0 (yay!)
+		if( $totalErrors == 0 ) {
+			// Form validation passed!
+			// Time to update the database
+			$firstName = $this->dbc->real_escape_string($_POST['first-name']);
+			$lastName = $this->dbc->real_escape_string($_POST['last-name']);
+
+			$userID = $_SESSION['id'];
+
+			//Prepare the SQL
+			$sql = " UPDATE users 
+					SET first_name = '$firstName',
+					last_name = '$lastName'
+					WHERE id = $userID ";
+			
+
+			//Run the query
+			$this->dbc->query( $sql );
+
+		
+
+		//start email	
+
+		//make sure the email has been provided and is valid
+		if( $_POST['email'] =='' ) {
+			//E-mail is invalid
+			$this->emailMessage = 'Invalid E-Mail'
+		}
+
+		//Make sure the E-mail is not in use
+		$filteredEmail = $this->dbc->real_escape_string( $_POST['email'] );
+
+		$sql = "SELECT email
+				FROM users
+				WHERE email = '$filteredEmail'  ";
+
+		// Run the query
+		$result = $this->dbc->query($sql);
+
+		// If the query failed OR there is a result
+		if( !$result || $result->num_rows > 0 ) {
+			$this->emailMessage = 'E-Mail in use';
+			$totalErrors++;
+		}
+
+
+
+
+		//Start password		
+
+		if(strlen($_POST['password']) < 8) {
+			$this->passwordMessage = 'Must be at least 8 characters';
+			$totalErrors++;
+		}
+
+		if( $totalErrors == 0 ) {
+
+			//validation passed!
+
+			//Filter user data before using it in a query
+			$filteredEmail = $this->dbc->real_escape_string($_POST['email'] );
+		}
+
+
+	}
+
+}
+

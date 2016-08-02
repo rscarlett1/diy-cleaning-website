@@ -189,7 +189,7 @@
 		  </div>
 
 		  <div class="enter-details">
-		    <button type="button" class="cancelbtn">Cancel</button>
+		    <button type="button" class="cancelbtn" data-dismiss="modal" aria-label="Close">Cancel</button>
 		    <span class="psw">Forgot <a href="#">password?</a></span>
 		  </div>
 		</form>
@@ -202,30 +202,30 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
-     <form id="sign-up-padding" action="what-to-clean.php?page=what-to-clean" method="post">
+     <form id="sign-up-padding" action="index.php?page=signup" method="post">
 
      	<h2>Sign Up</h2>
      	<div class="form-group">
 		    <label for="first-name">First Name</label>
-		    <input type="text" class="form-control" id="first name" placeholder="First Name">
+		    <input type="text" class="form-control" id="first-name" placeholder="First Name" name="first-mame">
 		  </div>
 
 		  <div class="form-group">
-		    <label for="first-name">Last Name</label>
-		    <input type="text" class="form-control" id="first name" placeholder="First Name">
+		    <label for="last-name">Last Name</label>
+		    <input type="text" class="form-control" id="last-name" placeholder="First Name" name="last-name">
 		  </div>
 
 
 		  <div class="form-group">
 		    <label for="exampleInputEmail1"> Your Email address</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="signup-email">
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleInputPassword1">Password</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="signup-password">
 		  </div>
 		  
-		  <button type="submit" name="" class="btn btn-default">Submit</button>
+		  <button type="submit" name="" class="btn btn-default" name="signup-submit">Submit</button>
 	</form>
     </div>
   </div>
