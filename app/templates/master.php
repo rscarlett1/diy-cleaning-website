@@ -171,18 +171,14 @@
 
 		  <div class="enter-details">
 		    <label><b>Email</b></label>
-		    <input type="text" placeholder="Email Address" name="email" value="<?= isset($_POST['email']) ? $_POST ['email'] : '' ?>">
+		    <input type="text" placeholder="Email Address" name="email">
 
-			<?php if(isset($emailMessage) ) : ?>
-			<p><?= $emailMessage ?></p>	
-			<?php endif; ?>
+			
 
 		    <label><b>Password</b></label>
-		    <input type="password" placeholder="Enter Password" name="passsword" value="<?= isset($_POST['password']) ? $_POST ['password'] : '' ?>">
+		    <input type="password" placeholder="Enter Password" name="password">
 			
-			<?php if(isset($passwordMessage) ) : ?>
-			<p><?= $passwordMessage ?></p>	
-			<?php endif; ?>
+			
 
 		    <button type="submit" name="new-account">Login</button>
 		    <input type="checkbox" checked="checked"> Remember me
@@ -207,25 +203,43 @@
      	<h2>Sign Up</h2>
      	<div class="form-group">
 		    <label for="first-name">First Name</label>
-		    <input type="text" class="form-control" id="first-name" placeholder="First Name" name="first-mame">
+		    <input type="text" class="form-control" id="first-name" placeholder="First Name" name="first-name" value="<?= isset($_POST['first-name']) ? $_POST ['first-name'] : '' ?>">
 		  </div>
+
+		   <?php if(isset($firstNameMessage) ) : ?>
+			<p><?= $firstNameMessage ?></p>	
+			<?php endif; ?>
 
 		  <div class="form-group">
 		    <label for="last-name">Last Name</label>
-		    <input type="text" class="form-control" id="last-name" placeholder="First Name" name="last-name">
+		    <input type="text" class="form-control" id="last-name" placeholder="First Name" name="last-name" value="<?= isset($_POST['last-name']) ? $_POST ['last-name'] : '' ?>">
 		  </div>
+
+		   <?php if(isset($lastNameMessage) ) : ?>
+			<p><?= $lastNameMessage ?></p>	
+			<?php endif; ?>
 
 
 		  <div class="form-group">
 		    <label for="exampleInputEmail1"> Your Email address</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="signup-email">
+		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email" value="<?= isset($_POST['email']) ? $_POST ['email'] : '' ?>">
 		  </div>
+
+		  <?php if(isset($emailMessage) ) : ?>
+			<p><?= $emailMessage ?></p>	
+			<?php endif; ?>
+
+
 		  <div class="form-group">
 		    <label for="exampleInputPassword1">Password</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="signup-password">
+		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" value="<?= isset($_POST['password']) ? $_POST ['password'] : '' ?>">
 		  </div>
+
+		  <?php if(isset($passwordMessage) ) : ?>
+			<p><?= $passwordMessage ?></p>	
+			<?php endif; ?>
 		  
-		  <button type="submit" name="" class="btn btn-default" name="signup-submit">Submit</button>
+		  <button type="submit" class="btn btn-default" name="signup-submit">Submit</button>
 	</form>
     </div>
   </div>

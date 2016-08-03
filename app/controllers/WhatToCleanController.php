@@ -1,6 +1,6 @@
 <?php
 
-class WhatToCleanController;
+class WhatToCleanController{
 
 //Properties
 
@@ -8,10 +8,11 @@ class WhatToCleanController;
 
 //Methods (functions)
 
-public function buildHTML() {
+	public function buildHTML() {
 
-	//Instantiate (create instance of) Plates library
-	$plates = new League\Plates\Engine('what-to-clean/templates');
+		//Instantiate (create instance of) Plates library
+		$plates = new League\Plates\Engine('what-to-clean/templates');
 
-	echo $plates->render('what-to-clean');
+		echo $plates->render('what-to-clean');
+	}
 }
