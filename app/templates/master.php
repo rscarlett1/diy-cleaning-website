@@ -204,42 +204,52 @@
      	<div class="form-group">
 		    <label for="first-name">First Name</label>
 		    <input type="text" class="form-control" id="first-name" placeholder="First Name" name="first-name" value="<?= isset($_POST['first-name']) ? $_POST ['first-name'] : '' ?>">
+		  	<span class="error" id="name-message"></span>
 		  </div>
 
-		   <?php if(isset($firstNameMessage) ) : ?>
+		   <!--<?php //if(isset($firstNameMessage) ) : ?>
 			<p><?= $firstNameMessage ?></p>	
-			<?php endif; ?>
+			<?php //endif; ?> -->
 
 		  <div class="form-group">
 		    <label for="last-name">Last Name</label>
 		    <input type="text" class="form-control" id="last-name" placeholder="First Name" name="last-name" value="<?= isset($_POST['last-name']) ? $_POST ['last-name'] : '' ?>">
+		  	<span class="error" id="last-name-message"></span>
 		  </div>
 
-		   <?php if(isset($lastNameMessage) ) : ?>
+		   <!--<?php //if(isset($lastNameMessage) ) : ?>
 			<p><?= $lastNameMessage ?></p>	
-			<?php endif; ?>
+			<?php //endif; ?> -->
 
 
 		  <div class="form-group">
 		    <label for="exampleInputEmail1"> Your Email address</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email" value="<?= isset($_POST['email']) ? $_POST ['email'] : '' ?>">
+		    <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<?= isset($_POST['email']) ? $_POST ['email'] : '' ?>">
+		  	<span class="error" id="email-name-message"></span>
 		  </div>
 
-		  <?php if(isset($emailMessage) ) : ?>
+		  <!--<?php //if(isset($emailMessage) ) : ?>
 			<p><?= $emailMessage ?></p>	
-			<?php endif; ?>
+			<?php //endif; ?> -->
 
 
 		  <div class="form-group">
-		    <label for="exampleInputPassword1">Password</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" value="<?= isset($_POST['password']) ? $_POST ['password'] : '' ?>">
+		    <label for="exampleInputPassword1">Enter Password</label>
+		    <input type="password" class="form-control" id="password-first" placeholder="Password" name="password" value="<?= isset($_POST['password']) ? $_POST ['password'] : '' ?>">
+		  	<span class="error" id="password-name-message"></span>
 		  </div>
 
-		  <?php if(isset($passwordMessage) ) : ?>
+		  <!--<?php //if(isset($passwordMessage) ) : ?>
 			<p><?= $passwordMessage ?></p>	
-			<?php endif; ?>
+			<?php //endif; ?> -->
+
+			<div class="form-group">
+		    <label for="exampleInputPassword1">Confirm Password</label>
+		    <input type="password" class="form-control" id="password-confirm" placeholder="Password" name="password-confirm" value="<?= isset($_POST['password']) ? $_POST ['password'] : '' ?>">
+		  	<span class="error" id="password-confirm-message"></span>
+		  </div>
 		  
-		  <button type="submit" class="btn btn-default" name="signup-submit">Submit</button>
+		  <button type="submit" id="submit" class="btn btn-default" name="signup-submit">Submit</button>
 	</form>
     </div>
   </div>
@@ -253,7 +263,8 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+<script src="js/pattern.js"></script>
+<script src="js/validation.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$('.carousel').carousel();

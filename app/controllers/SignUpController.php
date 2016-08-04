@@ -75,8 +75,8 @@ class SignUpController {
 			$data['passwordMessage'] = $this->passwordMessage;
 		}
 		var_dump($data);
-		die();
-		validateRegistrationForm();
+	
+		// validateRegistrationForm();
 		echo $plates->render('what-to-clean', $data);
 
 	}
@@ -89,7 +89,6 @@ class SignUpController {
 
 		//Make sure First name is is valid
 		if( strlen($_POST['first-name']) > 50 ) {
-			$this->data['firstNameMessage'] = '<p>Must be at most 50 characters</p>';
 			$totalErrors++;
 		}
 
