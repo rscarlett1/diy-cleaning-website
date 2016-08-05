@@ -1,115 +1,257 @@
-//Find the form
-
-var registrationForm = document.querySelector("#sign-up-padding");
-
-//WAIT FOR USER TO SUBMIT THE FORM
-	
-
 $( document ).ready(function() {
 
-   var Validname = false;
-   var Validemail = false;
-   var SigninPassword = false;
+	var ValidName = false;
+  	var ValidEmail = false;
+ 	var ValidPassword = false;
+ 	var ValidConfirmPassword = false;
 
-	$("#first-name").blur(function(){
+ 		//Validate Name
+		$( "#first-name" ).blur(function() {
 		$("#name-message").empty();
 
-		if($(this).val().length <= 0){
-			$("#name-message").append("<p>This is Required</p>");
-			Validname = false;
+		//Must be required
+		if( $(this).val().length === 0 ){
+			$("#name-message").removeClass("success").addClass("error").append("<p>This is required</p>");
+			ValidName = false;
 			return;
 		}
 
-		if($(this).val().length > 50){
-			$("#name-message").append("<p>This field must be no more than 50 characters</p>");
-			Validname = false;
+		//Cannot be greater than 20 Characters
+		if( $(this).val().length > 20 ){
+			$("#name-message").removeClass("success").addClass("error").append("<p>Cannot be Greater than 20 Characters</p>");
+			ValidName = false;
 			return;
 		}
 
-		if( !$(this).val().match("^[A-Za-z' .-]{1,30}$") ){
-			$("#name-message").append("<p>Name is not valid</p>");
-			Validname = false;
-			return;
-		}
-		Validname = true;
-
+		//Success
+		$("#name-message").removeClass("error").addClass("success").append("<p>Good to Go</p>");
+		ValidName = true;
 	});
 
-	var Validname = false;
 
-	$("#last-name").blur(function(){
+
+		
+
+ 		//Validate Last Name
+		$( "#last-name" ).blur(function() {
 		$("#last-name-message").empty();
 
-		if($(this).val().length === 0){
-			$("#last-name-message").append("<p>This is Required</p>");
-			Validname = false;
+		//Must be required
+		if( $(this).val().length === 0 ){
+			$("#last-name-message").removeClass("success").addClass("error").append("<p>This is required</p>");
+			ValidName = false;
 			return;
 		}
 
-
-		if($(this).val().length > 50){
-			$("#last-name-message").append("<p>this field must be no longer than 50 characters</p>");
-			Validname = false;
+		//Cannot be greater than 20 Characters
+		if( $(this).val().length > 20 ){
+			$("#last-name-message").removeClass("success").addClass("error").append("<p>Cannot be Greater than 20 Characters</p>");
+			ValidName = false;
 			return;
 		}
 
-		if( !$(this).val().match("^[A-Za-z' .-]{1,30}$") ){
-			$("#last-name-message").append("<p>Name is not valid</p>");
-			Validname = false;
-			return;
-		}
-
-		Validname = true;
+		//Success
+		$("#last-name-message").removeClass("error").addClass("success").append("<p>Good to Go</p>");
+		ValidName = true;
 	});
 
-	var Validemail = false;
 
-	$("#email").blur(function(){
+	
+		//Validate Email
+		$( "#email" ).blur(function() {
 		$("#email-name-message").empty();
-		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		if( !$(this).val().match(re) ) {
-			$("#email-name-message").append("<p>Name is not valid</p>");
-			FnameValid = false;
+
+		//Must be required
+		if( $(this).val().length === 0 ){
+			$("#email-name-message").removeClass("success").addClass("error").append("<p>This is required</p>");
+			ValidEmail = false;
 			return;
 		}
 
-		Validemail = true;
+		//Checks with Regular Express to see if it is a valid Email
+		var reg = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+		if( !$(this).val().match(reg)){
+			$("#email-name-message").removeClass("success").addClass("error").append("<p>This email address is invalid</p>");
+			ValidEmail = false;
+			return;
+		}
 
+		//Does not validate if email is already in the database
+
+		//Success
+		$("#email-name-message").removeClass("remove").addClass("success").append("<p>Good to Go</p>");
+		ValidEmail = true;
 	});
+ 	
 
-	var Validemail = false;
 
-	$("#password").blur(function(){
+
+ 		//Validate Password
+		$( "#password-first" ).blur(function() {
 		$("#password-name-message").empty();
 
-		if($(this).val().length === 0){
-			$("#password-name-message").append("<p>This is Required</p>");
-			Validemail = false;
+		//Must be Required
+		if( $(this).val().length === 0 ){
+			$("#password-name-message").removeClass("success").addClass("error").append("<p>This is required</p>");
+			ValidPassword = false;
 			return;
 		}
 
-		Validemail = true;
+		//Must be at least 8 Characters
+		if( $(this).val().length < 8 ){
+			$("#password-name-message").removeClass("success").addClass("error").append("<p>Must be at least 8 Characters</p>");
+			ValidPassword = false;
+			return;
+		}
 
-	function Validate() {
-        var password = document.getElementById("password-first").value;
-        var confirmPassword = document.getElementById("password-confirm").value;
-        if (password != confirmPassword) {
-            $("password-confirm-message").append("<p>Passwords do not match</p>");
-            SigninPassword = false;
-            return;
-        }
+		//Must have a Digit
+		var digit_pattern = new RegExp("[0-9]", "g");
+		if( !$(this).val().match(digit_pattern)){
+			$("#password-name-message").removeClass("success").addClass("error").append("<p>Must have a Digit</p>");
+			ValidPassword = false;
+			return;
+		}
 
-        SigninPassword = true;
-    };
+		//Must have a Uppercase Letter
+		var upper_pattern = new RegExp("[A-Z]", "g");
+		if( !$(this).val().match(upper_pattern)){
+			$("#password-name-message").removeClass("success").addClass("error").append("<p>Must have a Uppercase Letter</p>");
+			ValidPassword = false;
+			return;
+		}
 
+		//Success
+		$("#password-name-message").removeClass("error").addClass("success").append("<p>Good to Go</p>");
+		ValidPassword = true;
 	});
 
-	 $('#loginButton').click(function(event){
+
+	
+	//Validate Confirm Password
+		$( "#password-confirm" ).blur(function() {
+		$("#password-confirm-message").empty();
+
+		//Must be required
+		if( $(this).val().length === 0 ){
+			$("#password-confirm-message").removeClass("success").addClass("error");
+			$("#password-confirm-message").append("<p>This is required</p>");
+			ValidConfirmPassword = false;
+			return;
+		}
+
+		//Must match previous password
+		var Match = $("#exampleInputPassword1").val();
+		if( !$(this).val().match(Match)){
+			$("#password-confirm-message").removeClass("success").addClass("error").append("<p>Password does not match</p>");
+			ValidConfirmPassword = false;
+			return;
+		}
+
+		//Success
+		$("#password-confirm-message").removeClass("error").addClass("success").append("<p>Good to Go</p>");
+		ValidConfirmPassword = true;
+	});
+
+	
+
+
+ 	//Validate Confirm Password
+ 	$( "#password-confirm" ).blur(function() {
+ 		$("#password-confirm-message").empty();
+ 
+ 		//Must be required
+ 		if( $(this).val().length === 0 ){
+ 			$("#password-confirm-message").removeClass("success").addClass("error");
+ 			$("#password-confirm-message").append("<p>This is required</p>");
+ 			ValidConfirmPassword = false;
+ 			return;
+ 		}
+ 
+ 		//Must match previous password
+ 		var Match = $("#password-confirm").val();
+ 		if( !$(this).val().match(Match)){
+ 			$("#password-confirm-message").removeClass("success").addClass("error").append("<p>Password does not match</p>");
+ 			ValidConfirmPassword = false;
+ 			return;
+ 		}
+ 
+ 		//Success
+ 		$("#password-confirm-message").removeClass("error").addClass("success").append("<p>Good to Go</p>");
+ 		ValidConfirmPassword = true;
+ 	});
+
+ 	///When submit button is clicked
+	 $('#login-button').click(function(event){
 		event.preventDefault();
-		if(ValidName === true && ValidEmail === true){
-			$( "#LogininForm" ).submit();	
+		if(ValidName === true && ValidEmail === true && ValidPassword === true && ValidConfirmPassword === true){
+			$( "#sign-up-padding" ).submit();	
+		} else{
+			$("#form-message").empty().append("<p>You have some errors</p>")
+
+	        $("#sign-up-padding").each(function() {
+	        	if( $(this).val().length === 0 ){
+	        		$(this).parent().children("span").empty();
+	        		$(this).parent().children("span").removeClass("success").addClass("error").append("<p>This is required</p>");
+	        	}
+	        });
 		}
 	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -120,9 +262,3 @@ $( document ).ready(function() {
 
 
 });
-
-
-
-
-
-

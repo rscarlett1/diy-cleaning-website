@@ -249,7 +249,9 @@
 		  	<span class="error" id="password-confirm-message"></span>
 		  </div>
 		  
-		  <button type="submit" id="submit" class="btn btn-default" name="signup-submit">Submit</button>
+		  <button type="submit" id="login-button" class="btn btn-default" name="signup-submit">Submit</button>
+		  <span id="form-message" class="messages error"></span>
+
 	</form>
     </div>
   </div>

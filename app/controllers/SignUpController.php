@@ -83,41 +83,6 @@ class SignUpController {
 
 	public function validateRegistrationForm(){
 
-		$totalErrors = 0;
-
-		//start first name
-
-		//Make sure First name is is valid
-		if( strlen($_POST['first-name']) > 50 ) {
-			$totalErrors++;
-		}
-
-		if( strlen($_POST['first-name']) < 0 ) {
-			$this->data['firstNameMessage'] = '<p>Please enter your first name</p>';
-			$totalErrors++;
-		}
-
-
-		//start last name
-
-		// Validate the last name
-		if( strlen($_POST['last-name']) > 50 ) {
-			$this->data['lastNameMessage'] = '<p>Must be at most 50 characters</p>';
-			$totalErrors++;
-		}
-
-		if( strlen($_POST['last-name']) < 0 ) {
-			$this->data['lastNameMessage'] = '<p>Please enter your last name</p>';
-			$totalErrors++;
-		}
-
-		//make sure the email has been provided and is valid
-		if( $_POST['email'] =='' ) {
-			//E-mail is invalid
-			$this->emailMessage = 'Invalid E-Mail';
-			$totalErrors++;
-		}
-
 		// Make sure the E-Mail is not in use
 		$filteredEmail = $this->dbc->real_escape_string( $_POST['email'] );
 
@@ -131,11 +96,6 @@ class SignUpController {
 		// If the query failed OR there is a result
 		if( !$result || $result->num_rows > 0 ) {
 			$this->emailMessage = 'E-Mail in use';
-			$totalErrors++;
-		}
-
-		if(strlen($_POST['password']) < 8) {
-			$this->passwordMessage = 'Must be at least 8 characters';
 			$totalErrors++;
 		}
 

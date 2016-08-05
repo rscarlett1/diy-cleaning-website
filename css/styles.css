@@ -287,6 +287,14 @@ nav ul.nav.navbar-nav li{
 	padding-bottom: 20px;
 }
 
+.success{
+	color: #3c763d;
+}
+
+.error{
+	color: #a94442;
+}
+
 
 
 
