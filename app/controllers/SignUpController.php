@@ -1,5 +1,12 @@
 <?php
 
+//echo 'pre';
+//print_r( $_POST );
+//echo '</pre>';
+
+//var_dump($_POST);
+
+
 class SignUpController {
 
 	//Properties
@@ -7,48 +14,23 @@ class SignUpController {
 	private $lastNameMessage;
 	private $emailMessage;
 	private $passwordMessage;
-
 	private $dbc;
 
 	//Constructor
+
 	public function __construct($dbc){
 
-		//Save the database comnnection for later
+		//Save the database connnection for later
 		$this->dbc = $dbc;	
 
 		//If the user has submmitted the registration form
-
-		//To see if the post array is working  and every input has a nome if not working	
-		
-		//echo 'pre';
-		//print_r( $_POST );
-		//echo '</pre>';
-
-		//var_dump($_POST);
-
 		if( isset($_POST['signup-submit']) ) {
 			$this->validateRegistrationForm();
 		}
 	}
 
-	//Methods (functions)
-	public function registerAccount() {
-
-	//Validate the users data
-
-	//check the database to see if emails is in use
-
-	//check the strength of the password
-
-	//Register the account OR show error messages
-
-	//If successful, log user in and redirect to recipes pages
-
-
-	}
-
 	public function buildHTML() {
-			//Instantiate (create instance of) Plates library
+		//Instantiate (create instance of) Plates library
 		$plates = new League\Plates\Engine('app/templates');
 
 		//Prepare the container for data
@@ -64,7 +46,6 @@ class SignUpController {
 			$data['lastNameMessage'] = $this->lastNamelMessage;
 		}
 
-
 		// If there is an E-Mail error
 		if($this->emailMessage != '') {
 			$data['emailMessage'] = $this->emailMessage;
@@ -74,9 +55,9 @@ class SignUpController {
 		if($this->passwordMessage != '') {
 			$data['passwordMessage'] = $this->passwordMessage;
 		}
-		var_dump($data);
-	
-		// validateRegistrationForm();
+		
+		validateRegistrationForm();
+		
 		echo $plates->render('what-to-clean', $data);
 
 	}
@@ -95,50 +76,56 @@ class SignUpController {
 
 		// If the query failed OR there is a result
 		if( !$result || $result->num_rows > 0 ) {
-			$this->emailMessage = 'E-Mail in use';
+			$this->emailMessage = 'E-Mail is in use';
 			$totalErrors++;
 		}
 
+		//if($totalErrors === 0){
+		//	var_dump("you are good to procced");
+		//} 	else {
+		//	var_dump("there are ".$totalErrors." Errors");
+		//}
 
-		if($totalErrors === 0){
-			var_dump("you are good to procced");
-		} else {
-			var_dump("there are ".$totalErrors." Errors");
-		}
+		//Determine if this data is valid to go into the database		
 
+		if( $totalErrors === 0 ) {
 
+			//validation passed!
 
-		
+			//Hash the password
+			$hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-			//Determine if this data is valid to go into the database		
+			//Prepare the password
+			// Prepare the SQL
+			$sql = "INSERT INTO users ( first_name, last_name, email, password)
+					VALUES ('$filteredEmail', '$hash')";
 
-			
+			// Run the query
+			$this->dbc->query($sql);
 
-			if( $totalErrors === 0 ) {
+					// Check to make sure this worked on database
 
-				//validation passed!
+			// Log the user in
+			$_SESSION['id'] = $this->dbc->insert_id;
 
-				//Hash the password
-				$hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			// Redirect the user to the what to clean page
+			header('Location: index.php?page=what-to-clean');
+		}		
+	}
 
-				//Prepare the password
-				// Prepare the SQL
-				$sql = "INSERT INTO users ( first_name, last_name, email, password)
-						VALUES ('$filteredEmail', '$hash')";
+	//Methods (functions)
+	public function registerAccount() {
 
-				// Run the query
-				$this->dbc->query($sql);
+	//Validate the users data
 
-				// Check to make sure this worked
+	//check the database to see if emails is in use
 
+	//check the strength of the password
 
-				// Log the user in
-				$_SESSION['id'] = $this->dbc->insert_id;
+	//Register the account OR show error messages
 
-				// Redirect the user to their stream page
-				header('Location: index.php?page=what-to-clean');
-			}		
-		
+	//If successful, log user in and redirect to recipes pages
+
 
 	}
 
