@@ -3,6 +3,7 @@
 session_start();
 //make the vendor folder available to use
 require 'vendor/autoload.php';
+require "app/controllers/PageController.php"
 
 // load appripriate page
 

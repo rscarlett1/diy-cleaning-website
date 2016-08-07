@@ -1,4 +1,5 @@
 <?php
+//child controller
 
 //echo 'pre';
 //print_r( $_POST );
@@ -7,7 +8,7 @@
 //var_dump($_POST);
 
 
-class SignUpController {
+class SignUpController extends PageController {
 
 	//Properties
 	private $firstNameMessage;

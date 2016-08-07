@@ -1,12 +1,13 @@
 <?php
-
+//child controller
 class WhatToCleanController{
 
-//Properties
+	//Properties
 
-//Constructor
 
-//Methods (functions)
+	//Constructor
+
+	//Methods (functions)
 
 	public function buildHTML() {
 
