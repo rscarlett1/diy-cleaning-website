@@ -15,14 +15,17 @@ class SignUpController extends PageController {
 	private $lastNameMessage;
 	private $emailMessage;
 	private $passwordMessage;
-	private $dbc;
+	
 
 	//Constructor
 
 	public function __construct($dbc){
 
+		//Rin  the parent constructor
+		parent::__construct();
+
 		//Save the database connnection for later
-		$this->dbc = $dbc;	
+		$this->dbc = $dbc;
 
 		//If the user has submmitted the registration form
 		if( isset($_POST['signup-submit']) ) {
@@ -57,7 +60,7 @@ class SignUpController extends PageController {
 			$data['passwordMessage'] = $this->passwordMessage;
 		}
 		
-		validateRegistrationForm();
+		//validateRegistrationForm();
 		
 		echo $plates->render('what-to-clean', $data);
 
@@ -104,7 +107,7 @@ class SignUpController extends PageController {
 			// Run the query
 			$this->dbc->query($sql);
 
-					// Check to make sure this worked on database
+			// Check to make sure this worked on database
 
 			// Log the user in
 			$_SESSION['id'] = $this->dbc->insert_id;

@@ -9,9 +9,15 @@ abstract class PageController{
 	protected $title;
 	protected $metaDesc;
 	protected $dbc;
+	protected $plates;
 
-	//Force children classes to have the buildHTML function
-	abstract public function buildHTML()
+	public function __construct(){
+
+		$this->plates = new League\Plates\Engine('app/templates');
+	}
+
+	//Rule to Force children classes to have the buildHTML function
+	abstract public function buildHTML();
 
 	
 

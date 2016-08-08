@@ -3,7 +3,10 @@
 session_start();
 //make the vendor folder available to use
 require 'vendor/autoload.php';
-require "app/controllers/PageController.php"
+require "app/controllers/PageController.php";
+
+//Connect to the database
+$dbc = new mysqli('localhost', 'root', '', 'diy_cleaning_website');
 
 // load appripriate page
 
@@ -19,10 +22,6 @@ if( isset($_GET['page']) ){
 	$page = 'home';
 }
 
-
-
-//Connect to the database
-$dbc = new mysqli('localhost', 'root', '', 'diy_cleaning_website');
 
 // Load appropriate files based on page
 switch($page) {
@@ -61,10 +60,10 @@ switch($page) {
 		$controller = new LoginController($dbc);
 	break;
 
-	case 'signup':
-		require 'app/controllers/SignUpController.php';
-		$controller = new SignUpController($dbc);
-	break;
+	//case 'signup':
+	//	require 'app/controllers/SignUpController.php';
+	//	$controller = new SignUpController($dbc);
+	//break;
 
 	default:
 		echo $plates->render('error 404');
