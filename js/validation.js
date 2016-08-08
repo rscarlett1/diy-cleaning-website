@@ -79,7 +79,7 @@ $( document ).ready(function() {
 		//Does not validate if email is already in the database
 
 		//Success
-		$("#email-name-message").removeClass("remove").addClass("success").append("<p>Good to Go</p>");
+		$("#email-name-message").removeClass("error").addClass("success").append("<p>Good to Go</p>");
 		ValidEmail = true;
 	});
  	
@@ -104,21 +104,21 @@ $( document ).ready(function() {
 			return;
 		}
 
-		//Must have a Digit
-		var digit_pattern = new RegExp("[0-9]", "g");
-		if( !$(this).val().match(digit_pattern)){
-			$("#password-name-message").removeClass("success").addClass("error").append("<p>Must have a Digit</p>");
-			ValidPassword = false;
-			return;
-		}
+		// //Must have a Digit
+		// var digit_pattern = new RegExp("[0-9]", "g");
+		// if( !$(this).val().match(digit_pattern)){
+		// 	$("#password-name-message").removeClass("success").addClass("error").append("<p>Must have a Digit</p>");
+		// 	ValidPassword = false;
+		// 	return;
+		// }
 
-		//Must have a Uppercase Letter
-		var upper_pattern = new RegExp("[A-Z]", "g");
-		if( !$(this).val().match(upper_pattern)){
-			$("#password-name-message").removeClass("success").addClass("error").append("<p>Must have a Uppercase Letter</p>");
-			ValidPassword = false;
-			return;
-		}
+		// //Must have a Uppercase Letter
+		// var upper_pattern = new RegExp("[A-Z]", "g");
+		// if( !$(this).val().match(upper_pattern)){
+		// 	$("#password-name-message").removeClass("success").addClass("error").append("<p>Must have a Uppercase Letter</p>");
+		// 	ValidPassword = false;
+		// 	return;
+		// }
 
 		//Success
 		$("#password-name-message").removeClass("error").addClass("success").append("<p>Good to Go</p>");
@@ -181,14 +181,14 @@ $( document ).ready(function() {
  	});
 
  	///When submit button is clicked
-	 $('#login-button').click(function(event){
+	 $('#signup-submit').click(function(event){
 		event.preventDefault();
 		if(ValidName === true && ValidEmail === true && ValidPassword === true && ValidConfirmPassword === true){
 			$( "#sign-up-padding" ).submit();	
 		} else{
-			$("#form-message").empty().append("<p>You have some errors</p>")
+			$("#form-message").empty().addClass("error").append("<p>You have some errors</p>")
 
-	        $("#sign-up-padding").each(function() {
+	        $("#sign-up-padding input").each(function() {
 	        	if( $(this).val().length === 0 ){
 	        		$(this).parent().children("span").empty();
 	        		$(this).parent().children("span").removeClass("success").addClass("error").append("<p>This is required</p>");

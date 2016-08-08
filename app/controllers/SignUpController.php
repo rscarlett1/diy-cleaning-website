@@ -20,13 +20,11 @@ class SignUpController extends PageController {
 	//Constructor
 
 	public function __construct($dbc){
-
 		//Rin  the parent constructor
 		parent::__construct();
 
 		//Save the database connnection for later
 		$this->dbc = $dbc;
-
 		//If the user has submmitted the registration form
 		if( isset($_POST['signup-submit']) ) {
 			$this->validateRegistrationForm();
@@ -62,11 +60,20 @@ class SignUpController extends PageController {
 		
 		//validateRegistrationForm();
 		
-		echo $plates->render('what-to-clean', $data);
+		//echo $plates->render('what-to-clean', $data);
 
 	}
 
 	public function validateRegistrationForm(){
+
+		$totalErrors = 0;
+
+		if( $_POST['email'] == '' ) {
+			// E-Mail is invalid
+			$this->emailMessage = 'Invalid E-Mail';
+			$totalErrors++;
+		}
+
 
 		// Make sure the E-Mail is not in use
 		$filteredEmail = $this->dbc->real_escape_string( $_POST['email'] );
@@ -84,25 +91,23 @@ class SignUpController extends PageController {
 			$totalErrors++;
 		}
 
-		//if($totalErrors === 0){
-		//	var_dump("you are good to procced");
-		//} 	else {
-		//	var_dump("there are ".$totalErrors." Errors");
-		//}
-
 		//Determine if this data is valid to go into the database		
 
 		if( $totalErrors === 0 ) {
 
 			//validation passed!
 
-			//Hash the password
-			$hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			
+			$firstName = $this->dbc->real_escape_string($_POST['first-name']);
+			$lastName = $this->dbc->real_escape_string($_POST['last-name']); 
 
-			//Prepare the password
+			//Hash the password
+			$hash = password_hash( $_POST['password'], PASSWORD_BCRYPT );
+
+
 			// Prepare the SQL
-			$sql = "INSERT INTO users ( first_name, last_name, email, password)
-					VALUES ('$filteredEmail', '$hash')";
+			$sql = "INSERT INTO users (first_name, last_name, email, password)
+					VALUES ('$firstName', '$lastName', '$filteredEmail', '$hash')";
 
 			// Run the query
 			$this->dbc->query($sql);

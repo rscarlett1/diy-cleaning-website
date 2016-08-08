@@ -60,10 +60,10 @@ switch($page) {
 		$controller = new LoginController($dbc);
 	break;
 
-	//case 'signup':
-	//	require 'app/controllers/SignUpController.php';
-	//	$controller = new SignUpController($dbc);
-	//break;
+	case 'signup':
+		require 'app/controllers/SignUpController.php';
+		$controller = new SignUpController($dbc);
+	break;
 
 	default:
 		echo $plates->render('error 404');

@@ -27,7 +27,7 @@
 
 			
 				<div class= "col-md-4" >
-					<a href="home.html"><img src="img/logo.png" height="125" width="500"></a>
+					<a href="./"><img src="img/logo.png" height="125" width="500"></a>
 				</div>
 
 				<div class="col-md-4">
@@ -204,7 +204,7 @@
      	<div class="form-group">
 		    <label for="first-name">First Name</label>
 		    <input type="text" class="form-control" id="first-name" placeholder="First Name" name="first-name" value="<?= isset($_POST['first-name']) ? $_POST ['first-name'] : '' ?>">
-		  	<span class="error" id="name-message"></span>
+		  	<span id="name-message"></span>
 		  </div>
 
 		   <!--<?php //if(isset($firstNameMessage) ) : ?>
@@ -214,7 +214,7 @@
 		  <div class="form-group">
 		    <label for="last-name">Last Name</label>
 		    <input type="text" class="form-control" id="last-name" placeholder="First Name" name="last-name" value="<?= isset($_POST['last-name']) ? $_POST ['last-name'] : '' ?>">
-		  	<span class="error" id="last-name-message"></span>
+		  	<span id="last-name-message"></span>
 		  </div>
 
 		   <!--<?php //if(isset($lastNameMessage) ) : ?>
@@ -225,7 +225,7 @@
 		  <div class="form-group">
 		    <label for="exampleInputEmail1"> Your Email address</label>
 		    <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<?= isset($_POST['email']) ? $_POST ['email'] : '' ?>">
-		  	<span class="error" id="email-name-message"></span>
+		  	<span id="email-name-message"></span>
 		  </div>
 
 		  <!--<?php //if(isset($emailMessage) ) : ?>
@@ -236,7 +236,7 @@
 		  <div class="form-group">
 		    <label for="exampleInputPassword1">Enter Password</label>
 		    <input type="password" class="form-control" id="password-first" placeholder="Password" name="password" value="<?= isset($_POST['password']) ? $_POST ['password'] : '' ?>">
-		  	<span class="error" id="password-name-message"></span>
+		  	<span id="password-name-message"></span>
 		  </div>
 
 		  <!--<?php //if(isset($passwordMessage) ) : ?>
@@ -246,11 +246,12 @@
 			<div class="form-group">
 		    <label for="exampleInputPassword1">Confirm Password</label>
 		    <input type="password" class="form-control" id="password-confirm" placeholder="Password" name="password-confirm" value="<?= isset($_POST['password']) ? $_POST ['password'] : '' ?>">
-		  	<span class="error" id="password-confirm-message"></span>
+		  	<span id="password-confirm-message"></span>
 		  </div>
 		  
-		  <button type="submit" id="login-button" class="btn btn-default" name="signup-submit">Submit</button>
-		  <span id="form-message" class="messages error"></span>
+		  <!-- <button type="submit" id="signup-submit" class="btn btn-default" name="signup-submit">Submit</button> -->
+		  <input type="submit" class="btn btn-default" name="signup-submit" value="Submit">
+		  <span id="form-message" class="messages"></span>
 
 	</form>
     </div>
