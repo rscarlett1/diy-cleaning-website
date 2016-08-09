@@ -1,4 +1,4 @@
-<?php if(!isset($_SESSION['id'])): ?>
+<?php if(isset($_SESSION['id'])): ?>
 <div>
 	<p><a href "" data-toggle="modal" data-target=".signup-modal">
 	<img id="triangle" src="img/trianglepng.png" width="175" height="200" alt=""></a></p>
@@ -9,8 +9,8 @@
 </div>
 <?php else: ?>
 
-	<button id="member" type="button" class="btn btn-primary" href="">Logout</button>
-	<button id="member" type="button" class="btn btn-primary" href="">My Account</button>
+	<button id="member" type="button" class="btn btn-primary" href="index.php?=home">Logout</button>
+	<button id="member" type="button" class="btn btn-primary" href="index.php?=account">My Account</button>
 
 <!-- 	<ul>
 		<li>
