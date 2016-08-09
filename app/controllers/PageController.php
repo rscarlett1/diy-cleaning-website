@@ -19,6 +19,15 @@ abstract class PageController{
 	//Rule to Force children classes to have the buildHTML function
 	abstract public function buildHTML();
 
+	public function mustBeLoggedIn(){
+		
+		if(!isset($_SESSION['id']) ){
+			//Redirect the user to the login page
+			header('Location: index.php?page=home');
+		}
+
+	}
+
 	
 
 	public function logoff($dbc){

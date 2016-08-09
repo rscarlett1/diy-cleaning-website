@@ -4,10 +4,10 @@
 <article class="kitchen-recipes">
   <div class="row container">
     <div class="col-xs-4 image-align-center" id="kitchen-recipes">
-      <img src="" alt="">
-      <h1 class="image-align-center"></h1>
+      <img src="<?= $kitchenrecipes['image']?>" alt="">
+      <h1 class="image-align-center"><?= $kitchenrecipes['title']?></h1>
 
-      <p> </p>
+      <p><?= $kitchenrecipes['description']?></p>
 
       <a href="#"><button>Click Here</button></a>
     </div>  

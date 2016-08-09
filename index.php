@@ -65,6 +65,10 @@ switch($page) {
 		$controller = new SignUpController($dbc);
 	break;
 
+	case 'account':
+		require 'app/controllers/AccountController.php';
+		$controller = new AccountController($dbc);
+
 	default:
 		echo $plates->render('error 404');
 	break;

@@ -1,4 +1,11 @@
-<?php $this->layout('master') ?>
+<?php 
+
+	$this->layout('master', [
+		'title'=>'Choose what area in your house you would like to clean',
+		'desc'=>'categories of areas i the house you would like to clean'
+	]);
+
+?>
 
 <main>
 	</div> <!-- container -->
