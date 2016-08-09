@@ -1,6 +1,6 @@
 <?php
 
-class ControllerName extends PageController{
+class "ControllerName" extends PageController{
 
 
 	public function __construct($dbc){
