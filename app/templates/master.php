@@ -51,15 +51,7 @@
 				</div>
 
 				<div class="col-md-4">
-				
-					<div>
-						<p><a href "" data-toggle="modal" data-target=".signup-modal">
-						<img id="triangle" src="img/trianglepng.png" width="175" height="200" alt=""></a></p>
-					</div>
-
-					<div>
-						<button id="member" type="button" class="btn btn-primary" data-toggle="modal" data-target=".login-modal">Membership Login</button>
-					</div>
+					<?= $this->insert('nav') ?>
 				</div>
 			</div>
 
@@ -249,8 +241,8 @@
 		  	<span id="password-confirm-message"></span>
 		  </div>
 		  
-		  <!-- <button type="submit" id="signup-submit" class="btn btn-default" name="signup-submit">Submit</button> -->
-		  <input type="submit" class="btn btn-default" name="signup-submit" value="Submit">
+		  <input type="hidden" name="signup-submit">
+		  <input type="submit" id="signup-submit" class="btn btn-default" value="Submit">
 		  <span id="form-message" class="messages"></span>
 
 	</form>

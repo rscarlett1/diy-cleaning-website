@@ -46,10 +46,10 @@ class WhatToCleanController extends PageController{
 		$result = $this->dbc->query($sql);		
 
 		//Extract the results as an array
-		$allData = $result->fetch_all(MYSQLI_ASSOC);
+		//$allData = $result->fetch_all(MYSQLI_ASSOC);
 
-		print_r($allData);
-		die();
+		//print_r($allData);
+		//die();
 
 		//Return the results to the code that called this function
 	}

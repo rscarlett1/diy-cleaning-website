@@ -68,9 +68,17 @@ switch($page) {
 	case 'account':
 		require 'app/controllers/AccountController.php';
 		$controller = new AccountController($dbc);
+	break;
+
+	case 'logout':
+		unset($_SESSION['id']);
+		unset($_SESSION['privilege']);
+		header('Location: index.php');
+	break;
 
 	default:
-		echo $plates->render('error 404');
+		$plates = new League\Plates\Engine('app/templates');
+		echo $plates->render('error404');
 	break;
 }
 
