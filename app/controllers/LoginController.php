@@ -26,6 +26,7 @@ class LoginController extends PageController{
 	}
 
 	private function processingLoginForm() {
+		$totalErrors = 0;
 
 		//Make sure email address is provided	
 		if( strlen( $_POST['email'] ) < 6 ){
@@ -51,7 +52,7 @@ class LoginController extends PageController{
 
 			// Prepare SQL query
 
-			$sql = "SELECT password
+			$sql = "SELECT id, password
 					FROM users
 					WHERE email = '$filteredEmail' ";
 
