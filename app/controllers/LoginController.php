@@ -10,35 +10,32 @@ class LoginController extends PageController{
 		
 		//Save database connection
 		$this->dbc = $dbc;
-
+		// var_dump($_POST);
 		//If the login form has been submitted
 		if(isset( $_POST['login'] ) ) {
-			$this->processLoginForm();	
+			$this->processLoginForm();
 		}
 
 	}
 
 	public function buildHTML() {
 		//Instantiate (create instance of) Plates library
-		$plates = new League\Plates\Engine('app/templates');
+		//$plates = new League\Plates\Engine('app/templates');
 
-		echo $this->plates->render('login' $this->data);
+		echo $this->plates->render('login', $this->data);
 	}
 
-	private function processingLoginForm() {
+	private function processLoginForm() {
 		$totalErrors = 0;
 
 		//Make sure email address is provided	
 		if( strlen( $_POST['email'] ) < 6 ){
+			//Prepare error messages
+			$this->data['emailMessage'] = 'Invalid E-mail';
+			$totalErrors++;
+		}
 
-		//Prepare error messages
-		$this->data['emailMessage'] = 'Invalid E-mail';
-		$totalErrors++;
-
-	}
-
-		if( strlen ( $_POST ) < 8 ) {
-
+		if( strlen ( $_POST['password'] ) < 8 ) {
 			$this->data['passwordMessage'] = 'Invalid password must be more than 8 characters';
 			$totalErrors++;
 		}
@@ -52,9 +49,10 @@ class LoginController extends PageController{
 
 			// Prepare SQL query
 
-			$sql = "SELECT id, password
+			$sql = "SELECT user_id, password
 					FROM users
 					WHERE email = '$filteredEmail' ";
+			// die($sql);
 
 			//Run the query
 			$result = $this->dbc->query( $sql );
@@ -67,34 +65,31 @@ class LoginController extends PageController{
 
 				$passwordResult = password_verify( $_POST['password'], $userData['password'] );
 
-				//If the result was good
+				// If the result was good
 				if( $passwordResult == true ) {
-					//Log the user in
+					// Log the user in
+					$_SESSION['user_id'] = $userData['user_id']; 
+					header('Location: index.php?page=what-to-clean');
+
 				} else {
 					// Prepare error message
-					$this->data['loginMessage'] = 'Email or Password incorrect';
+					$this->data['loginMessage'] = 'E-Mail or Password incorrect';
 				}
+
 
 			} else {
 
-				//Credentials do not match our records
-				$this->data['loginMessage'] = 'Email or Password incorrect';
+				// Credentials do not match our records
+				$this->data['loginMessage'] = 'E-Mail or Password incorrect';
 
 			}
 
-							
 		}
-
-
-
-
 
 	}
 
 
-
-
-
-
-	
 }
+
+
+

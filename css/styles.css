@@ -310,13 +310,17 @@ nav ul.nav.navbar-nav li{
 }
 
 #login-form{
-	background-color: pink;
-	padding: 400px;
+	background-color: #e7ebed;
+	margin-left: 800px;
+	display: inline-block;
+	padding: 100px;
 }
 
-#login-form label{
-	text-align: block;
+.login-padding{
+	margin-bottom: 50px;
 }
+
+
 
 
 

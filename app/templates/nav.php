@@ -1,4 +1,5 @@
-<?php if(!isset($_SESSION['id'])): ?>
+<!-- When you are Logged Out -->
+<?php if(!isset($_SESSION['user_id'])): ?>
 <div>
 	<p><a href "" data-toggle="modal" data-target=".signup-modal">
 	<img id="triangle" src="img/trianglepng.png" width="175" height="200" alt=""></a></p>
@@ -7,17 +8,11 @@
 <div>
 	<a href="index.php?page=login"><button id="member" type="button" class="btn btn-primary" data-toggle="modal" data-target=".login-modal">Membership Login</button></a>
 </div>
+<!-- When you are Logged in  -->
 <?php else: ?>
 
-	<button id="member" type="button" class="btn btn-primary" href="index.php?=home">Logout</button>
-	<button id="member" type="button" class="btn btn-primary" href="index.php?=account">My Account</button>
 
-<!-- 	<ul>
-		<li>
-			<a href="index.php?page=account">Your Account</a>
-		</li>
-		<li>
-			<a href="index.php?page=logout>">Logout</a>
-		</li>
-	</ul> -->
+	<a href="index.php?page=logout"><button id="member" type="button" class="btn btn-primary" >Logout</button></a>
+	<button id="member" type="button" class="btn btn-primary" href="index.php?page=account">My Account</button>
+
 <?php endif; ?>

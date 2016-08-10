@@ -29,21 +29,21 @@ class WhatToCleanController extends PageController{
 		$plates = new League\Plates\Engine('app/templates');
 
 		//Get latest recipes
-		$this->getLatestRecipes();
+		//$this->getLatestRecipes();
 
 		echo $this->plates->render('what-to-clean');
 	}
 
-	private function getLatestRecipes(){
+	//private function getLatestRecipes(){
 
 		//Prepare some SQL
-		$sql = "SELECT *
-				FROM recipes";
+		//$sql = "SELECT *
+				//FROM recipes";
 
 
 
 		//Run the SQL and capture the result
-		$result = $this->dbc->query($sql);		
+		//$result = $this->dbc->query($sql);		
 
 		//Extract the results as an array
 		//$allData = $result->fetch_all(MYSQLI_ASSOC);
@@ -52,7 +52,7 @@ class WhatToCleanController extends PageController{
 		//die();
 
 		//Return the results to the code that called this function
-	}
+	//}
 
 
 

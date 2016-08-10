@@ -21,6 +21,16 @@
 
 <body>
 
+<?php
+
+	if(isset($_SESSION['user_id'])){
+		var_dump("you are logged in");
+	} else {
+		var_dump("You are looged Out");
+	}
+
+
+ ?>
 <div class="container-fluid">
 	<nav>
 			<div class="row" id="logo">

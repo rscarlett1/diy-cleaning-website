@@ -22,7 +22,7 @@ abstract class PageController{
 
 	public function mustBeLoggedIn(){
 		
-		if(!isset($_SESSION['id']) ){
+		if(!isset($_SESSION['user_id']) ){
 			//Redirect the user to the login page
 			header('Location: index.php?page=home');
 		}

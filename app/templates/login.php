@@ -12,25 +12,23 @@
 
        <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" value="<?= isset($_POST['login']) ? $POST['email'] : '' ?>">
+        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" value="<?= isset($_POST['login']) ? $_POST['email'] : '' ?>">
         </div>
 
         <?php if( isset ($emailMessage) ):  ?>
         <p> <?= $emailMessage ?></p>
         <?php endif ?>
 
-        <?php if( isset ($loginMessage) ):  ?>
-        <p> <?= $loginMessage ?></p>
-        <?php endif ?>
+        
 
         <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" name="password"placeholder="Password">
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
       </div>
-
-      
-      <button type="submit" class="btn btn-default" name="login">Login</button>
-      <a href="index.php?page=home">Sign Up Today</a>
+      <?php if( isset ($loginMessage) ):  ?>
+        <p> <?= $loginMessage ?></p>
+      <?php endif ?>
+      <input type="submit" value="Login" name="login" class="btn btn-default">
     </form>
   </div>
 </div>
