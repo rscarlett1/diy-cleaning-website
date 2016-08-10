@@ -1,45 +1,38 @@
 <?php $this->layout('master') ?>
 
-<main id="login-page">
-  <div class="row align-center" id="login-container">
-    <div class="column align-self-middle large-5">
-      <h1>Log in to Pinterest</h1>
-      <a href="" class="button large expanded" id="facebook-login"><i class="fa fa-facebook-official" aria-hidden="true"></i> Log in with Facebook</a>
-      <a href="" class="button large expanded" id="google-login"><i class="fa fa-google" aria-hidden="true"></i> Log in with Google</a>
-      <hr>
-      <form action="index.php?page=login" method="post">
-        <input type="text" name="email" placeholder="Email" value="<?= isset($_POST['login']) ? $_POST['email'] : '' ?>">      
+<main>
 
-        <?php if( isset($emailMessage) ): ?>
-        <p> <?= $emailMessage ?> </p>
-        <?php endif ?>
+<div  class="row container">
+    <div class="col-xs-12">
+      <form id="login-form" action="index.php?page=login" method="post">
+        <h1>Login</h1>
 
-        <input type="password" name="password" placeholder="Create a password">
+        <button type="button" class="btn btn-primary">Facebook</button>
+        <button type="button" class="btn btn-success">Google</button>
 
-        <?php if( isset($passwordMessage) ): ?>
-        <p> <?= $passwordMessage ?> </p>
-        <?php endif ?>
-
-        <?php if( isset($loginMessage) ): ?>
-        <p> <?= $loginMessage ?> </p>
-        <?php endif ?>
-
-        <small>Are you a business? <a href="">Get started here</a></small>
-        <hr>
-        <div class="row">
-          <div class="columns large-8">
-            <ul class="no-bullet">
-              <li><a href="">Forgotten your password?</a></li>
-              <li><a href="index.php?page=register">Sign up now</a></li>
-            </ul>
-          </div>
-          <div class="columns large-4">
-            <input type="submit" name="login" class="button alert expanded" value="Log in">
-          </div>
+       <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" value="<?= isset($_POST['login']) ? $POST['email'] : '' ?>">
         </div>
-      </form>
 
-    </div>
+        <?php if( isset ($emailMessage) ):  ?>
+        <p> <?= $emailMessage ?></p>
+        <?php endif ?>
+
+        <?php if( isset ($loginMessage) ):  ?>
+        <p> <?= $loginMessage ?></p>
+        <?php endif ?>
+
+        <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password"placeholder="Password">
+      </div>
+
+      
+      <button type="submit" class="btn btn-default" name="login">Login</button>
+      <a href="index.php?page=home">Sign Up Today</a>
+    </form>
   </div>
+</div>
 
   

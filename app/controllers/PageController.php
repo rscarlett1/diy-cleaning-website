@@ -10,7 +10,7 @@ abstract class PageController{
 	protected $metaDesc;
 	protected $dbc;
 	protected $plates;
-	protected $data = []
+	protected $data = [];
 
 	public function __construct(){
 

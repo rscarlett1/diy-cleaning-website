@@ -307,13 +307,19 @@ nav ul.nav.navbar-nav li{
 .image-align-center{
 	text-align: center;
 	display: inline-block;
-
 }
 
-/*article div img{
-	text-align: center;
-	display: inline-block;
-}*/
+#login-form{
+	background-color: pink;
+	padding: 400px;
+}
+
+#login-form label{
+	text-align: block;
+}
+
+
+
 
 
 

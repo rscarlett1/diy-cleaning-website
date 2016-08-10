@@ -9,7 +9,7 @@
 
 <main>	
 	<div class="container">
-		<main>
+		
 			<div class="row slider-images" >
 				<div class="">
 					<div id="carousel-example-generic" class="carousel slide col-xs-12" data-ride="carousel">
@@ -116,4 +116,5 @@
 					<img src="img/advertising/solor-advertising.jpg" height="350" width="350" >
 				</div>
 		</div>
+</main>
 	
