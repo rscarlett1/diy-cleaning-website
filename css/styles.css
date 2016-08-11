@@ -54,7 +54,7 @@ nav ul.nav.navbar-nav li{
 
 #member{
 	margin-top: 40px;
-	margin-left: 300px;
+	margin-left: 200px;
 	
 }	
 
@@ -320,6 +320,21 @@ nav ul.nav.navbar-nav li{
 	margin-bottom: 50px;
 }
 
+#account-details{
+	background-color: pink;
+	display: inline-block;
+	padding-left: 300px;
+	padding-bottom: 20px;
+}
+
+#heading-acc{
+	text-align: center;
+}
+
+#profile-button{
+	margin-left: 50px;
+	padding: 10px;
+}
 
 
 

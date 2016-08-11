@@ -26,11 +26,10 @@ class AccountController extends PageController{
 		if( isset($_POST['new-post']) ) {
 			$this->processNewPost();
 		}
-
-
 	}
 
 	public function buildHTML() {
+
 		//Instantiate (create instance of) Plates library
 		$plates = new League\Plates\Engine('app/templates');
 
@@ -44,6 +43,7 @@ class AccountController extends PageController{
 
 		// Validate the first name
 		if( strlen($_POST['first-name']) > 50 ) {
+			var_dump($_POST);
 			$this->data['firstNameMessage'] = '<p>Must be at most 50 characters</p>';
 			$totalErrors++;
 		}
@@ -63,6 +63,7 @@ class AccountController extends PageController{
 
 			$userID = $_SESSION['id'];
 
+
 			// Prepare the SQL
 			$sql = "UPDATE users
 					SET first_name = '$firstName',
@@ -71,9 +72,10 @@ class AccountController extends PageController{
 
 			// Run the query
 			$this->dbc->query( $sql );
-
 		}
 
 
 	
+	}
+
 }

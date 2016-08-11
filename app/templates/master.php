@@ -94,7 +94,7 @@
 
 
 
-</main>
+
 
 <?php echo $this->section('content') ?>
 
@@ -160,6 +160,7 @@
 		</div>
 	</div>
 </footer>
+</body>
 		
 <!-- Large modal -->
 

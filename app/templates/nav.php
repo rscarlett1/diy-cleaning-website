@@ -13,6 +13,7 @@
 
 
 	<a href="index.php?page=logout"><button id="member" type="button" class="btn btn-primary" >Logout</button></a>
-	<button id="member" type="button" class="btn btn-primary" href="index.php?page=account">My Account</button>
+	
+	<a href="index.php?page=account"><button id="member" type="button" class="btn btn-primary">My Account</button></a>
 
 <?php endif; ?>
