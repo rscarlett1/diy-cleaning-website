@@ -27,7 +27,7 @@
 					</div>
 					<br>                            
 
-						<?= isset($firstNameMessage) ? $firstNameMessage : '' ?>
+					<?= isset($firstNameMessage) ? $firstNameMessage : '' ?>
 
 					<div>	
 					<label for="">Last Name: </label>
@@ -55,17 +55,21 @@
     		<h1>Upload Your Own DIY Cleaning Recipes</h1>
     		<div>
     			<label for="title">Title: </label>
-    			<input type="text" name="recipe-title" id="kitch-title">
+    			<input type="text" name="recipe-title" id="recipe-title">
+    			<?= isset($titleMessage) ? $titleMessage : '' ?>
+
     		</div>
     	
 			<div>
 				<label for"desc">Description</label>
 				<textarea name="recipe-desc" cols"5" rows="10"></textarea>
+				<?= isset($descMessage) ? $descMessage : '' ?>
 			</div>
 
 			<div>
-				<label for"desc">Method</label>
+				<label for"method">Method</label>
 				<textarea name="recipe-methods" cols"80" rows="10"></textarea>
+				<?= isset($methodMessage) ? $methodMessage : '' ?>
 			</div>
 
 
@@ -74,8 +78,9 @@
 			</div>
 
 			
-
+			<div>
 			<input type="submit" name="submit-recipe" value="Submit">
+			</div>
 
     	</form>
     </div>	

@@ -2,12 +2,6 @@
 
 class AccountController extends PageController{
 
-	private $firstNameMessage;
-	private $lastNameMessage;
-	private $emailMessage;
-
-
-
 	public function __construct($dbc){
 
 		//Run the parent constructer
@@ -25,6 +19,8 @@ class AccountController extends PageController{
 		//Did the user submit a new recipe
 		if( isset($_POST['submit-recipe']) ){
 			$this->processNewRecipe();
+
+
 		}
 
 	}
@@ -62,7 +58,7 @@ class AccountController extends PageController{
 			$firstName = $this->dbc->real_escape_string($_POST['first-name']);
 			$lastName = $this->dbc->real_escape_string($_POST['last-name']);
 
-			$userID = $_SESSION['id'];
+			$userID = $_SESSION['user_id'];
 
 
 			// Prepare the SQL
@@ -78,18 +74,73 @@ class AccountController extends PageController{
 
 	private function processNewRecipe() {
 
+		//echo '<pre>';
+		//print_r($_POST);
+		//die();
+
 		//Count errors
-		$totalErrors = 0
+		$totalErrors = 0;
 
-		$title = trim($_POST['title']);
+		$recipetitle = trim($_POST['recipe-title']);
+		$recipedesc = trim($_POST['recipe-desc']);
+		$recipemethod = trim($_POST['recipe-methods']);
 
-		if ( strlen (trim ( $title) ) == 0 ){
-			$this->data['titleMessage'] = 'Required' ;
+		//Title
+		if( strlen(  $recipetitle  ) == 0 ) {
+			$this->data['titleMessage'] = '<p>Required field</p>' ;
 			$totalErrors++;
-		} elseif( strlen( $title ) > 100){
-			$this->data['titleMessage'] = 'Cannot be more than 100 Characters';
+		} elseif( strlen( $recipetitle ) > 100){
+			$this->data['titleMessage'] = '<p>Cannot be more than 100 Characters</p>';
 			$totalErrors++;
 		}
+
+		//Description
+		if ( strlen ( $recipedesc )  == 0 ){
+			$this->data['descMessage'] = '<p>Required field</p>' ;
+			$totalErrors++;
+		} elseif( strlen( $recipedesc) > 1000 ){
+			$this->data['descMessage'] = '<p>Cannot be more than 100 Characters</p>';
+			$totalErrors++;
+		}
+
+		//Method
+		if ( strlen ( $recipemethod ) == 0 ){
+			$this->data['methodMessage'] = '<p>Required field</p>' ;
+			$totalErrors++;
+		} 
+
+	//If there are no errors
+	if( $totalErrors ==0 ){
+
+			$recipetitle = $this->dbc->real_escape_string($recipetitle);
+			$recipedesc = $this->dbc->real_escape_string($recipedesc);
+			$recipemethod = $this->dbc->real_escape_string($recipemethod);
+
+			// Get the ID of logged in user
+			$userID = $_SESSION['user_id'];
+
+			// SQL (INSERT)
+			$sql = "INSERT INTO recipe_database (user_id, title, description, method)
+					VALUES ( $userID '$recipetitle', '$recipedesc', '$recipemethod') ";
+
+			$this->dbc->query( $sql );
+
+			// Make sure it worked
+			if( $this->dbc->affected_rows ) {
+				$this->data['postMessage'] = 'Success!';
+			} else {
+				$this->data['postMessage'] = 'Something went wrong!';
+			}
+
+
+			// Success message! (or error message)
+
+		}
+
+
+
+
+
 
 	}
 	
