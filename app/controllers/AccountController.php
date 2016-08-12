@@ -22,10 +22,11 @@ class AccountController extends PageController{
 			$this->processNewContactDetails();
 		}
 
-		// Did the user submit the new post form?
-		if( isset($_POST['new-post']) ) {
-			$this->processNewPost();
+		//Did the user submit a new recipe
+		if( isset($_POST['submit-recipe']) ){
+			$this->processNewRecipe();
 		}
+
 	}
 
 	public function buildHTML() {
@@ -73,9 +74,26 @@ class AccountController extends PageController{
 			// Run the query
 			$this->dbc->query( $sql );
 		}
-
-
-	
 	}
+
+	private function processNewRecipe() {
+
+		//Count errors
+		$totalErrors = 0
+
+		$title = trim($_POST['title']);
+
+		if ( strlen (trim ( $title) ) == 0 ){
+			$this->data['titleMessage'] = 'Required' ;
+			$totalErrors++;
+		} elseif( strlen( $title ) > 100){
+			$this->data['titleMessage'] = 'Cannot be more than 100 Characters';
+			$totalErrors++;
+		}
+
+	}
+	
+
+
 
 }

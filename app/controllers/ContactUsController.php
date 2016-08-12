@@ -1,17 +1,23 @@
 <?php
 
-class ContactUsController;
+class AboutUsController extends PageController{
 
-//Properties
 
-//Constructor
+	public function __construct($dbc){
 
-//Methods (functions)
+		//Run the parent constructer
+		parent::__construct();
+		
+		$this->dbc = $dbc;
 
-public function buildHTML() {
+	}
 
-	//Instantiate (create instance of) Plates library
-	$plates = new League\Plates\Engine('app/templates');
+	public function buildHTML() {
+		//Instantiate (create instance of) Plates library
+		$plates = new League\Plates\Engine('app/templates');
 
-	echo $plates->render('contact-us');
+		echo $this->plates->render('about-us');
+	}
+
+	
 }

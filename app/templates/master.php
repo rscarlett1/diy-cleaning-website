@@ -71,21 +71,21 @@
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      
 			      <ul class="nav navbar-nav">
-			        <li class="diy-menu"><a href="home.html">Home<span class="sr-only">(current)</span></a></li>
-			        <li class="diy-menu"><a href="about-us.html">About Us</a></li>
+			        <li class="diy-menu"><a href="index.php?page=home">Home<span class="sr-only">(current)</span></a></li>
+			        <li class="diy-menu"><a href="index.php?page=about-us">About Us</a></li>
 			        <!-- <li class="active diy-menu"><a href="">What Would You Like To Clean</a></li> -->
 					
 					      <li class="dropdown nav navbar-nav">
-				          <a href="wwylrc.html" class="dropdown-toggle diy-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">What Would You Like To Clean<span class="caret"></span></a>
+				          <a href="index.php?page=login" class="dropdown-toggle diy-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">What Would You Like To Clean<span class="caret"></span></a>
 				          <ul class="dropdown-menu">
-				            <li class="diy-menu"><a href="wwyltc.html">Kitchen</a></li>
-				            <li class="diy-menu"><a href="wwyltc.html">Laundry</a></li>
-				            <li class="diy-menu"><a href="wwyltc.html">Bathroom and Toilet</a></li>
-				            <li class="diy-menu"><a href="wwyltc.html">Garage</a></li>
+				            <li class="diy-menu"><a href="index.php?page=login.php">Kitchen</a></li>
+				            <li class="diy-menu"><a href="index.php?page=login.php">Laundry</a></li>
+				            <li class="diy-menu"><a href="index.php?page=login.php">Bathroom and Toilet</a></li>
+				            <li class="diy-menu"><a href="index.php?page=login.php">Garage</a></li>
 				          </ul>
 				        </li>
 
-				      <li class="diy-menu"><a href="contact-us.html">Contact Us</a></li>
+				      <li class="diy-menu"><a href="index.php?page=contact.php">Contact Us</a></li>
 			      </ul>
 			    </div>   	      
 			</div>

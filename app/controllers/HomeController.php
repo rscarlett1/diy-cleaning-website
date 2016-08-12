@@ -1,14 +1,15 @@
 <?php
 
-class HomeController {
+class HomeController extends PageController {
 
 	//Properties
 	private $emailMessage;
-	private $dbc;
+	
 
 	//Constructor
 	public function __construct($dbc){
 
+	parent::__construct();	
 
 	}
 

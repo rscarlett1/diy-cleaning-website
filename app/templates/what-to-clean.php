@@ -12,28 +12,28 @@
 
 		<div class="row container images-wwyltc" >
 			 <div class="col-xs-6 center-image bgimages" id="bathroom-image">
-				<h1 class="image-height">Bathroom</h1>
+				<a href="index.php?page=bathroom-recipes"><h1 class="image-height">Bathroom</h1></a>
 			</div>
 
 			<div class="col-xs-6 center-image bgimages" id="kitchen-image">
-				<h1 class="image-height">Kitchen</h1>
-			</div>
+				<a href="index.php?page=kitchen-recipes"><h1 class="image-height">Kitchen</h1>
+			</div></a>
 		</div>
 
 		<div class="row container images-wwyltc">
 
 			<div class="col-xs-6 center-image" id="laundry-image">
-			<h1 class="image-height ">Laundry</h1>
+			<a href="index.php?page=laundry-recipes"><h1 class="image-height ">Laundry</h1></a>
 			</div>
 			
 			<div class="col-xs-6 center-images" id="garage-image">
-			<h1 class="image-height">Garage</h1>
+			<a href="index.php?page=garage-recipes"><h1 class="image-height">Garage</h1></a>
 			</div>
 		</div>
 
 		<div class="row container images-wwyltc">
 			<div class="col-xs-12 bgimages" id="other-areas-image">
-			<h1 class="image-height" id="move-heading">Other Areas</h1>
+			<a href="index.php?page=other-areas-recipes"><h1 class="image-height" id="move-heading">Other Areas</h1>
 			</div>
 		</div>
 	</div>

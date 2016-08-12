@@ -70,6 +70,11 @@ switch($page) {
 		$controller = new AccountController($dbc);
 	break;
 
+	case 'kitchen-recipes':
+		require 'app/controllers/AccountController.php';
+		$controller = new RecipesController ($dbc);
+	break;
+
 	case 'logout':
 		unset($_SESSION['user_id']);
 		header('Location: index.php');
