@@ -39,6 +39,9 @@
 					<?= isset($lastNameMessage) ? $lastNameMessage : '' ?>
 
 					<input type="submit" id="profile-button"class="button" name="update-contact" value="Update your details">
+					<?= isset($postMessage) ? $postMessage : '' ?>
+
+
 				</div>
 			</div>	
 		</form>

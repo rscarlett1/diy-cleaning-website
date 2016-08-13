@@ -121,8 +121,11 @@ class AccountController extends PageController{
 
 			// SQL (INSERT)
 			$sql = "INSERT INTO recipe_database (user_id, title, description, method)
-					VALUES ( $userID '$recipetitle', '$recipedesc', '$recipemethod') ";
+					VALUES ($userID, '$recipetitle', '$recipedesc', '$recipemethod') ";
 
+			$this->dbc->query( $sql );
+
+			//Make sure it worked
 			$this->dbc->query( $sql );
 
 			// Make sure it worked
@@ -139,12 +142,5 @@ class AccountController extends PageController{
 
 
 
-
-
-
 	}
-	
-
-
-
 }
