@@ -5,7 +5,7 @@
 <head>
 		<meta charset="utf8">
 
-		<title><?= $title ?></title>
+		<title> <?= $title ?> </title>
 
 		<meta name="description" content="<?= $desc ?>">
 
