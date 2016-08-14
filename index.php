@@ -51,8 +51,8 @@ switch($page) {
 	break;
 
 	case 'recipes':
-		require 'app/controllers/ContactUsController.php';
-		$controller = new ContactUsController($dbc);
+		require 'app/controllers/RecipesController.php';
+		$controller = new RecipesController($dbc);
 	break;
 
 	case 'login':

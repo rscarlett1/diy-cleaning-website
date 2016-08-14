@@ -34,22 +34,7 @@ class WhatToCleanController extends PageController{
 		echo $this->plates->render('what-to-clean');
 	}
 
-	private function getLatestRecipes(){
-
-		//Prepare some SQL
-		$sql = "SELECT * 
-				FROM recipes_database
-				WHERE category=$_GET['type']";
-
-
-		//Run the SQL and capture the result
-		$result = $this->dbc->query($sql);		
-
-		//Extract the results as an array
-		$allData = $result->fetch_all(MYSQLI_ASSOC);
-
-		return $allData;
-	}
+	
 
 
 
