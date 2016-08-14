@@ -134,28 +134,28 @@
 
 		<div class= "col-md-4 container">
 			<div id="subscribe">
-						<form>
-							<div>
-								<strong>Subscribe To Our Newsletter</strong><br><br>
-							</div>
+				<form>
+					<div>
+						<strong>Subscribe To Our Newsletter</strong><br><br>
+					</div>
 
-							<div class="form-group">
-							    <label for="exampleInputEmail1">Email address:</label>
-							    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-							</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Email address:</label>
+					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+					</div>
 
-							 <div class="form-group">
-							    <label for="exampleInputPassword1">First Name:</label>
-							    <input type="first-name" class="form-control" id="exampleInputPassword1" placeholder="First Name">
-							</div>
+					 <div class="form-group">
+					    <label for="exampleInputPassword1">First Name:</label>
+					    <input type="first-name" class="form-control" id="exampleInputPassword1" placeholder="First Name">
+					</div>
 
-							  <div class="form-group">
-							    <label for="exampleInputPassword1">Last Name:</label>
-							    <input type="last-name" class="form-control" id="exampleInputPassword1" placeholder="Last Name">
-							</div>
-							  
-							  <button type="submit" >Subscribe</button>
-						</form>
+					  <div class="form-group">
+					    <label for="exampleInputPassword1">Last Name:</label>
+					    <input type="last-name" class="form-control" id="exampleInputPassword1" placeholder="Last Name">
+					</div>
+					  
+					  <button type="submit" >Subscribe</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -203,6 +203,8 @@
 
      <form id="sign-up-padding" action="index.php?page=signup" method="post">
 
+     	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     	
      	<h2>Sign Up</h2>
      	<div class="form-group">
 		    <label for="first-name">First Name</label>

@@ -69,6 +69,12 @@ class AccountController extends PageController{
 
 			// Run the query
 			$this->dbc->query( $sql );
+
+			if( $this->dbc->affected_rows ) {
+				$this->data['postMessage'] = 'Success!';
+			} else {
+				$this->data['postMessage'] = 'Something went wrong!';
+			}
 		}
 	}
 
