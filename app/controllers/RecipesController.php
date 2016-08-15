@@ -10,6 +10,8 @@ class RecipesController extends PageController{
 		
 		$this->dbc = $dbc;
 
+		$this->getLatestRecipes();
+
 	
 	}
 
@@ -17,12 +19,12 @@ class RecipesController extends PageController{
 		//Instantiate (create instance of) Plates library
 		$plates = new League\Plates\Engine('app/templates');
 
- 		$allData = $this->getLatestRecipes();
-		$data = [];
+ 	// 	$allData = $this->getLatestRecipes();
+		// $data = [];
 
-		$data['recipes'] = $allData;
+		// $data['recipes'] = $allData;
 
-		echo $this->plates->render('recipes', $data);
+		echo $this->plates->render('recipes', $this->data);
 	}
 
 
@@ -39,10 +41,17 @@ class RecipesController extends PageController{
 		//Run the SQL and capture the result
 		$result = $this->dbc->query($sql);		
 
-		//Extract the results as an array
-		$allData = $result->fetch_all(MYSQLI_ASSOC);
 
-		return $allData;
+		// If the query failed
+		if( !$result || $result->num_rows == 0 ) {
+			// Redirect user to 404 page
+			header('Location: index.php?page=404');
+		} else {
+			// Yay!
+			$this->data['recipes'] = $result->fetch_all(MYSQLI_ASSOC);
+		}
+
+
 	}
 
 }
