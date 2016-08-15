@@ -10,13 +10,19 @@ class RecipesController extends PageController{
 		
 		$this->dbc = $dbc;
 
+	
 	}
 
 	public function buildHTML() {
 		//Instantiate (create instance of) Plates library
 		$plates = new League\Plates\Engine('app/templates');
 
-		echo $this->plates->render('recipes');
+ 		$allData = $this->getLatestRecipes();
+		$data = [];
+
+		$data['recipes'] = $allData;
+
+		echo $this->plates->render('recipes', $data);
 	}
 
 
@@ -27,9 +33,8 @@ class RecipesController extends PageController{
 
 		//Prepare some SQL
 		$sql = "SELECT * 
-				FROM recipes_database
-				WHERE category = $type";
-		die($sql);
+				FROM recipe_database
+				WHERE category = '$type'";
 
 		//Run the SQL and capture the result
 		$result = $this->dbc->query($sql);		
