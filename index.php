@@ -75,6 +75,11 @@ switch($page) {
 		$controller = new RecipesController ($dbc);
 	break;
 
+	case 'fullrecipepage':
+		require 'app/controllers/FullRecipeController.php';
+		$controller = new FullRecipeController ($dbc);
+	break;
+
 	case 'logout':
 		unset($_SESSION['user_id']);
 		header('Location: index.php');
