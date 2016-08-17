@@ -49,5 +49,31 @@ class FullRecipeController extends PageController{
 		}
 	}
 
+	private function getRecipePage(){
+
+		$fullrecipeID = $this->dbc->real_escape_string( $_GET['fullrecipeid'] );
+
+		//Prepare some SQL
+		$sql = "SELECT recipe_id, title, description, category, method 
+				FROM recipe_database
+				JOIN users
+				ON recipe_database
+				WHERE recipe.id = recipe_id";
+
+		//Run the SQL and capture the result
+		$result = $this->dbc->query($sql);		
+
+
+		// If the query failed
+		if( !$result || $result->num_rows == 0 ) {
+			// Redirect user to 404 page
+			header('Location: index.php?page=404');
+		} else {
+			// Yay!
+			$this->data['recipes'] = $result->fetch_all(MYSQLI_ASSOC);
+		}
+
+	}
+
 	
 }
