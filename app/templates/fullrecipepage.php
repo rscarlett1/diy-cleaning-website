@@ -9,7 +9,6 @@
     
 ?>
 
-<?php var_dump($fullrecipepage); ?>
 
 <main>
 
@@ -40,4 +39,14 @@
   <?php endforeach; ?>
 </div> 
 <!-- endforeach -->
-</div> 
+</div>
+
+<section> 
+
+  <h1>Comments: (7)</h1>
+
+  <form action="index.php?page="></form>
+
+
+
+</section> 
