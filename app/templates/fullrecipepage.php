@@ -25,7 +25,7 @@
         <p><?= $fullrecipepage['method'] ?></p>
 
 
-      <a href="index.php?page=post&postid=<?= $item['user_id'] ?>"><img img class="img-responsive" src="<?= $item['image'] ?>" alt="..."></a>
+      <img img class="img-responsive" src="<?= $item['image'] ?>" alt="...">
       
       <div class="caption">
 
@@ -43,9 +43,18 @@
 
 <section> 
 
-  <h1>Comments: (7)</h1>
+  <h2>Comments: (7)</h2>
 
-  <form action="index.php?page="></form>
+  h1>Comments: (<?= count($allComments) ?>)</h1>
+
+  <form action="index.php?page=fullrecipepage&recipe_id=<?= $_GET['recipe_id'] ?>" method="post">
+    
+    <label for="comment">Please write a comment: </label>
+    <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+    <input type="submit" name="new-comment" value="Submit">
+
+  </form>
+
 
 
 

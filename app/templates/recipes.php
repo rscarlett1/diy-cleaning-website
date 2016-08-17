@@ -30,7 +30,7 @@
       <img img class="img-responsive" src="img/uploads/highres/<?= $post['image'] ?>" alt="...">
 
 
-      <a href="index.php?page=fullrecipepage&recipesid=<?= $['recipe_id'] ?>"><img img class="img-responsive" src="<?= $item['image'] ?>" alt="..."></a>
+      <a href="index.php?page=fullrecipepage&recipesid=<?= $recipe['recipe_id'] ?>"><img img class="img-responsive" src="<?= $item['image'] ?>" alt="..."></a>
       
 
       <div class="caption">

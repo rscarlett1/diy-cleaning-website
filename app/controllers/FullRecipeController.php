@@ -10,7 +10,16 @@ class FullRecipeController extends PageController{
 		
 		$this->dbc = $dbc;
 
+		//Did the user add a comment
+		if( isset( $_POST['new-comment'])){
+			$this->processNewComment();
+
+		}
+
 		$this->getFullRecipeData();
+
+		
+
 
 	}
 
@@ -75,5 +84,19 @@ class FullRecipeController extends PageController{
 
 	}
 
+	private function processNewComment(){
+
+		//validate the comment
+
+		//Minimum length
+
+		//maximum length
+
+		//if passed add to database
+		"SELECT comment, first_name, last_name
+		FROM comments
+		JOIN users
+		comments.user_id = users.user_id"
+	}
 	
 }
