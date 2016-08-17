@@ -15,13 +15,15 @@
 
 
 <div class="container">
- <h1>How to clean <u><?=$_GET['type'] ?></u></h1>
+
+ <a><h1>How to clean <u><?=$_GET['type'] ?></u></h1></a>
+
  <div class="row">
   <!-- foreach Loop -->
   <?php foreach($recipes as $recipe): ?>
   <div class=" col-xs-12 col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img img class="img-responsive" src="img/post-images/post1.jpg" alt="...">
+      <img img class="img-responsive" src="img/uploads/highres/<?= $post['image'] ?>" alt="...">
       <div class="caption">
         <h2> <?= $recipe['title'] ?></h2>
         <p><?= $recipes['description'] ?></p>
