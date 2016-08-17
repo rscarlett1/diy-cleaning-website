@@ -93,10 +93,24 @@ class FullRecipeController extends PageController{
 		//maximum length
 
 		//if passed add to database
+		if( $totalErrors == 0 ) {
+
+			//Filter the comment
+			$comment = $this->dbc->real_escape_string($_POST['comment']);
+
+			$userID = $_SESSION['user_id'];
+
+			$recipeID = $this->dbc->real_escape_string($_GET['recipe_id']);
+
+
+
+		}
+
 		"SELECT comment, first_name, last_name
 		FROM comments
 		JOIN users
-		comments.user_id = users.user_id"
+		comments.user_id = users.user_id
+		WHERE post_id = 3"
 	}
 	
 }
