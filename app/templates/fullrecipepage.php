@@ -1,37 +1,38 @@
 <?php 
 
     $this->layout ('master', [
-        'title'=>'Recipes page',
-        'desc'=>'A list of various cleaning recipes for each area of your house'
+        'title'=>'Recipe page',
+        'desc'=>'A recipe how to make the cleaner'
     ]); 
 
 
     
 ?>
 
+<?php var_dump($fullrecipepage); ?>
 
-<?php var_dump($recipes); ?>
-
+<main>
 
 
 <div class="container">
+  <div class="row">
+      <!-- foreach Loop -->
+      <?php foreach($fullrecipepage as $fullrecipepage): ?>
+      <div class=" col-xs-12 col-sm-12 col-md-12">
+        <div class="thumbnail">
 
- <h1>How to clean</h1>
- <div class="row">
-  <!-- foreach Loop -->
-  <?php foreach($recipes as $recipe): ?>
-  <div class=" col-xs-12 col-sm-12 col-md-12">
-    <div class="thumbnail">
+        <h1><?= $fullrecipepage['title'] ?> </h1>
+        <p><?= $fullrecipepage['description'] ?></p>
+        <p><?= $fullrecipepage['method'] ?></p>
+
 
       <a href="index.php?page=post&postid=<?= $item['user_id'] ?>"><img img class="img-responsive" src="<?= $item['image'] ?>" alt="..."></a>
       
       <div class="caption">
 
-        <h2> <?= $recipe['title'] ?></h2>
-        <p><?= $recipe['description'] ?></p>
-        <p><?= $recipe['method'] ?></p>
+        
 
-        <p>Posted By:<?= $recipe['first_name'].' '.$recipe['last_name'] ?></p>
+        <p>Posted By:<?= $fullrecipepage['first_name'].' '.$fullrecipepage['last_name'] ?></p>
         
       </div>
     </div>
