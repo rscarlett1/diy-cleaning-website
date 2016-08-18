@@ -51,11 +51,24 @@
     
     <label for="comment">Please write a comment: </label>
     <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+
+    <?= isset($commentMessage) ? $commentNameMessage : '' ?>
+
     <input type="submit" name="new-comment" value="Submit">
+
+    <?= isset($recipeCommentMessage) ? $recipeCommentMessage : '' ?>
 
   </form>
 
+  <?php foreach($allComments as $comment): ?>
+
+    <article> 
+        <p><?= $comment['comment'] ?> </p>
+        <small>Written by: <?= $comment['author'] ?></small>
+
+    </article>
 
 
+  <?php endforeach ?>
 
 </section> 

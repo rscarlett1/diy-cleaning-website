@@ -56,6 +56,20 @@ class FullRecipeController extends PageController{
 			$this->data['fullrecipepage'] = $result->fetch_all(MYSQLI_ASSOC);
 			
 		}
+
+		//Get all the comments
+		$sql = "SELECT comment, CONCAT(first_name, ' ' last_name) AS author
+		FROM comments
+		JOIN users
+		ON comments.user_id = users.user_id
+		WHERE recipe_id = $recipeID
+		ORDER BY created_at DESC";
+
+		$result = $this->dbc->query($sql);
+
+		//Extract the data as an associative array
+		
+		$this->data['allComments'] = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
 	private function getRecipePage(){
@@ -86,13 +100,22 @@ class FullRecipeController extends PageController{
 
 	private function processNewComment(){
 
-		//validate the comment
+		$totalErrors = 0;{
 
-		//Minimum length
+		// Validate the comment
+		//validate the minimum length	
+		if( strlen($_POST['comment']) > 50 ) {
+			var_dump($_POST);
+			$this->data['commentMessage'] = '<p>Must be at most 50 characters</p>';
+			$totalErrors++;
+		}
 
-		//maximum length
+		// Validate the maximum length
+		if( strlen($_POST['comment']) > 2000 ) {
+			$this->data['commentMessage'] = '<p>Must be at most 2000 characters</p>';
+			$totalErrors++;
+		}
 
-		//if passed add to database
 		if( $totalErrors == 0 ) {
 
 			//Filter the comment
@@ -102,15 +125,18 @@ class FullRecipeController extends PageController{
 
 			$recipeID = $this->dbc->real_escape_string($_GET['recipe_id']);
 
+		"INSERT INTO comments (comment, user_id, recipe_id)
+		VALUES ('$comment', $userID, $recipeID)";
 
+		$this->dbc->query($sql);
 
-		}
-
-		"SELECT comment, first_name, last_name
-		FROM comments
-		JOIN users
-		comments.user_id = users.user_id
-		WHERE post_id = 3"
+		//Make sure query worked
+		if( $this->dbc->affected_rows ) {
+				$this->data['recipeCommentMessage'] = 'Success!';
+			} else {
+				$this->data['recipeCommentMessage'] = 'Something went wrong!';
+			}
 	}
 	
 }
+
