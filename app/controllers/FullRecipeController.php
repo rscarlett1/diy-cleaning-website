@@ -17,10 +17,6 @@ class FullRecipeController extends PageController{
 		}
 
 		$this->getFullRecipeData();
-
-		
-
-
 	}
 
 	public function buildHTML() {
@@ -72,6 +68,8 @@ class FullRecipeController extends PageController{
 		$this->data['allComments'] = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
+
+
 	private function getRecipePage(){
 
 		$fullrecipeID = $this->dbc->real_escape_string( $_GET['fullrecipeid'] );
@@ -95,12 +93,11 @@ class FullRecipeController extends PageController{
 			// Yay!
 			$this->data['recipes'] = $result->fetch_all(MYSQLI_ASSOC);
 		}
-
 	}
 
 	private function processNewComment(){
 
-		$totalErrors = 0;{
+		$totalErrors = 0;
 
 		// Validate the comment
 		//validate the minimum length	
@@ -125,18 +122,21 @@ class FullRecipeController extends PageController{
 
 			$recipeID = $this->dbc->real_escape_string($_GET['recipe_id']);
 
-		"INSERT INTO comments (comment, user_id, recipe_id)
-		VALUES ('$comment', $userID, $recipeID)";
+			"INSERT INTO comments (comment, user_id, recipe_id)
+			VALUES ('$comment', $userID, $recipeID)";
 
-		$this->dbc->query($sql);
+			$this->dbc->query($sql);
 
-		//Make sure query worked
-		if( $this->dbc->affected_rows ) {
+			//Make sure query worked
+			if( $this->dbc->affected_rows ) {
 				$this->data['recipeCommentMessage'] = 'Success!';
 			} else {
 				$this->data['recipeCommentMessage'] = 'Something went wrong!';
 			}
+		}
 	}
-	
+
 }
+
+
 
