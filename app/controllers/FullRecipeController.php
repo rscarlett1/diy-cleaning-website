@@ -54,12 +54,12 @@ class FullRecipeController extends PageController{
 		}
 
 		//Get all the comments
-		$sql = "SELECT comment, CONCAT(first_name, ' ' last_name) AS author
+		$sql = "SELECT comment, CONCAT(first_name, ' ', last_name) AS author
 		FROM comments
 		JOIN users
 		ON comments.user_id = users.user_id
-		WHERE recipe_id = $recipeID
-		ORDER BY created_at DESC";
+		WHERE recipe_id = '$fullrecipeID'
+		ORDER BY ceated_at DESC";
 
 		$result = $this->dbc->query($sql);
 
@@ -122,7 +122,7 @@ class FullRecipeController extends PageController{
 
 			$recipeID = $this->dbc->real_escape_string($_GET['recipe_id']);
 
-			"INSERT INTO comments (comment, user_id, recipe_id)
+			$sql = "INSERT INTO comments (comment, user_id, recipe_id)
 			VALUES ('$comment', $userID, $recipeID)";
 
 			$this->dbc->query($sql);
