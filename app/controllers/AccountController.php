@@ -93,11 +93,6 @@ class AccountController extends PageController{
 		$recipedesc = trim($_POST['recipe-desc']);
 		$recipemethod = trim($_POST['recipe-methods']);
 
-		
-		
-		
-
-
 		//Title
 		if( strlen(  $recipetitle  ) == 0 ) {
 			$this->data['titleMessage'] = '<p>Required field</p>' ;
@@ -122,14 +117,29 @@ class AccountController extends PageController{
 			$totalErrors++;
 		} 
 
-	//If there are no errors
-	if( $totalErrors ==0 ){
+		//If there are no errors
+		if( $totalErrors == 0 ) {
 
-			//Instance of interventiommImage
-			$manager = new ImageManager(array('driver' => 'imagick'));
+			// Instance of Intervention Image
+			$manager = new ImageManager();
 
-			
+			// Get the file that was just uploaded
+			$image = $manager->make( $_FILES['image']['tmp_name'] );
 
+			$fileExtension = $this->getFileExtension( $image->mime() );
+
+			$fileName = uniqid();
+
+			$image->save("img/uploads/original/$fileName$fileExtension");
+
+			// //$image->resize(320, null, function ($constraint) {
+			//     $constraint->aspectRatio();
+			// //});
+
+			// $image->save("img/uploads/stream/$fileName$fileExtension");
+
+						
+			//Filter the data
 			$recipetitle = $this->dbc->real_escape_string($recipetitle);
 			$recipedesc = $this->dbc->real_escape_string($recipedesc);
 			$recipemethod = $this->dbc->real_escape_string($recipemethod);
@@ -138,11 +148,9 @@ class AccountController extends PageController{
 			$userID = $_SESSION['user_id'];
 
 			// SQL (INSERT)
-			$sql = "INSERT INTO recipe_database (user_id, title, description, method)
-					VALUES ($userID, '$recipetitle', '$recipedesc', '$recipemethod') ";
-
-			$this->dbc->query( $sql );
-
+			$sql = "INSERT INTO recipe_database (user_id, title, description, method image)
+					VALUES ($userID, '$recipetitle', '$recipedesc', '$recipemethod' '$fileName$fileExtension') ";
+				
 			//Make sure it worked
 			$this->dbc->query( $sql );
 
@@ -152,13 +160,37 @@ class AccountController extends PageController{
 			} else {
 				$this->data['postMessage'] = 'Something went wrong!';
 			}
-
-
-			// Success message! (or error message)
-
 		}
-
-
-
 	}
+
+	private function getFileExtension( $mimeType ) {
+
+		switch($mimeType) {
+
+			case 'image/png':
+				return '.png';
+			break;
+
+			case 'image/gif':
+				return '.gif';
+			break;
+
+			case 'image/jpeg':
+				return '.jpg';
+			break;
+
+			case 'image/bmp':
+				return '.bmp';
+			break;
+
+			case 'image/tiff':
+				return '.tif';
+			break;
+		}
+	}
+
+
+
+
+
 }

@@ -14,11 +14,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 image-align-center" id="">
-				<h1 id="heading-acc">Account Profile</h1>
+				
 
 					<form action="index.php?page=account" id="account-details" method="post">
 		 				<div class="row container">
-			    			<div class="col-xs-12 image-align-center" >	
+			    			<div class="col-xs-12 image-align-center" >
+			    				<h1 id="heading-acc">Account Profile</h1>	
 				
 								<h2>Update your contact details</h2>
 
@@ -30,15 +31,15 @@
 
 								<?= isset($firstNameMessage) ? $firstNameMessage : '' ?>
 
-								<div>	
+								<div class="form-group">	
 								<label for="">Last Name: </label>
-								<input type="text" name="last-name" value="<?= isset($_POST['update-contact']) ? $_POST['last-name'] : '' ?>">
+								<input class="form-control" type="text" name="last-name" value="<?= isset($_POST['update-contact']) ? $_POST['last-name'] : '' ?>">
 								</div>
 								<br>
 
 								<?= isset($lastNameMessage) ? $lastNameMessage : '' ?>
 
-								<input type="submit" id="profile-button"class="button" name="update-contact" value="Update your details">
+								<input type="submit" id="profile-button"class="btn btn-default" name="update-contact" value="Update Your Details">
 								<?= isset($postMessage) ? $postMessage : '' ?>
 							</div>
 						</div>	
@@ -48,6 +49,7 @@
 	</div>	
 </article>
 
+
 <article>
 	<div class="container">
 	  <div class="row">
@@ -56,38 +58,40 @@
 	    		<form action="index.php?page=account" method="post" name="new-recipe" id="recipe-post" enctype="multipart/form-data">
 
 	    		<h2 class="upload-header">Upload Your Own DIY Cleaning Recipes</h2>
-			    		<div>
-			    			<label for="title">Title: </label>
-			    			<input type="text" name="recipe-title" id="recipe-title">
-			    			<?= isset($titleMessage) ? $titleMessage : '' ?>
+		    		<div class="form-group">
+		    			<label for="title">Title: </label>
+		    			<input  class="form-control" type="text" name="recipe-title" id="recipe-title">
+		    			<?= isset($titleMessage) ? $titleMessage : '' ?>
 
-			    		</div>
-			    	
-						<div>
-							<label for"desc">Description</label>
-							<textarea name="recipe-desc" cols"5" rows="10"></textarea>
-							<?= isset($descMessage) ? $descMessage : '' ?>
-						</div>
+		    		</div>
+		    	
+					<div class="form-group">
+						<label for"desc">Description</label>
+						<textarea  class="form-control" name="recipe-desc" cols"5" rows="10"></textarea>
+						<?= isset($descMessage) ? $descMessage : '' ?>
+					</div>
 
-						<div>
-							<label for"method">Method</label>
-							<textarea name="recipe-methods" cols"80" rows="10"></textarea>
-							<?= isset($methodMessage) ? $methodMessage : '' ?>
-						</div>
+					<div class="form-group">
+						<label for"method">Method</label>
+						<textarea  class="form-control" name="recipe-methods" cols"80" rows="10"></textarea>
+						<?= isset($methodMessage) ? $methodMessage : '' ?>
+					</div>
 
 
-						<div id="image-recipe-upload">
-							<label for="image">Image</label>
-			    			<input type="file" name="recipe-image" id="image">
-						</div>
+					<div class="form-group">
+						<label name="image" for="image">Image</label>
+		    			<input  class="form-control" type="file" name="image" id="image">
+		    			<?= isset($imageMessage) ? $imageMessage : '' ?>
+					</div>
 
-						
-						<div>
-						<input type="submit" name="submit-recipe" value="Submit">
-						</div>
-
-	    		</form>
+					
+					<div class="form-group">
+					<input type="button" class="btn btn-default" type="submit" name="submit-recipe" value="Submit">
+					<?= isset($postMessage) ? $postMessage : '' ?>
+					</div>
+				</form>
 	    	</div>	
 		</div>
 	</div>
 </article>
+
