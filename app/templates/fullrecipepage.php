@@ -41,16 +41,17 @@
 <!-- endforeach -->
 </div>
 
+
+<?php var_dump($allComments); ?> 
+
 <section> 
 
-  <h2>Comments: (7)</h2>
-
-  h1>Comments: (<?= count($allComments) ?>)</h1>
+  <h2>Comments: (<?= count($allComments) ?>)</h2>
 
   <form action="index.php?page=fullrecipepage&recipe_id=<?= $_GET['recipe_id'] ?>" method="post">
     
     <label for="comment">Please write a comment: </label>
-    <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+    <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
 
     <?= isset($commentMessage) ? $commentNameMessage : '' ?>
 
