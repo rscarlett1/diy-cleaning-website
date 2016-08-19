@@ -132,11 +132,11 @@ class AccountController extends PageController{
 
 			$image->save("img/uploads/original/$fileName$fileExtension");
 
-			// //$image->resize(320, null, function ($constraint) {
-			//     $constraint->aspectRatio();
-			// //});
+			$image->resize(400, null, function ($constraint) {
+			     $constraint->aspectRatio();
+			});
 
-			// $image->save("img/uploads/stream/$fileName$fileExtension");
+			$image->save("img/uploads/recipes/$fileName$fileExtension");
 
 						
 			//Filter the data
