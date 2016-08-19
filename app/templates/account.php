@@ -77,7 +77,8 @@
 
 
 						<div id="image-recipe-upload">
-			    			<input type="file" name="recipe-image" id="kitc-image">
+							<label for="image">Image</label>
+			    			<input type="file" name="recipe-image" id="image">
 						</div>
 
 						

@@ -1,5 +1,7 @@
 <?php
 
+use Intervention\Image\ImageManager;
+
 class AccountController extends PageController{
 
 	public function __construct($dbc){
@@ -91,6 +93,11 @@ class AccountController extends PageController{
 		$recipedesc = trim($_POST['recipe-desc']);
 		$recipemethod = trim($_POST['recipe-methods']);
 
+		
+		
+		
+
+
 		//Title
 		if( strlen(  $recipetitle  ) == 0 ) {
 			$this->data['titleMessage'] = '<p>Required field</p>' ;
@@ -117,6 +124,11 @@ class AccountController extends PageController{
 
 	//If there are no errors
 	if( $totalErrors ==0 ){
+
+			//Instance of interventiommImage
+			$manager = new ImageManager(array('driver' => 'imagick'));
+
+			
 
 			$recipetitle = $this->dbc->real_escape_string($recipetitle);
 			$recipedesc = $this->dbc->real_escape_string($recipedesc);

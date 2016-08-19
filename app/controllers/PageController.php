@@ -5,7 +5,7 @@
 //stops duplication 
 abstract class PageController{
 
-	//clild controllers can access these files when protected
+	//child controllers can access these files when protected
 	protected $title;
 	protected $metaDesc;
 	protected $dbc;
