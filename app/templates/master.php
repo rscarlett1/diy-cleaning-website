@@ -139,7 +139,7 @@
 						<strong>Subscribe To Our Newsletter</strong><br><br>
 					</div>
 
-					<div class="form-group">
+					<div class="form-group align">
 					    <label for="exampleInputEmail1">Email address:</label>
 					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
 					</div>
