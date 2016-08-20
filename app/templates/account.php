@@ -87,7 +87,7 @@
 					
 					<div class="form-group">
 					<input type="button" class="btn btn-default" type="submit" name="submit-recipe" value="Submit">
-					<?= isset($postMessage) ? $postMessage : '' ?>
+					<?= isset($recipeUploadMessage) ? $recipeUploadMessage : '' ?>
 					</div>
 				</form>
 	    	</div>	

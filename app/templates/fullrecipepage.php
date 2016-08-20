@@ -36,7 +36,7 @@
   </div>
 
 
-<?php var_dump($allComments); ?> 
+ 
 
 <section>
     <div class="container">
@@ -89,7 +89,3 @@
     </div>
 </section> 
 
-<div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>

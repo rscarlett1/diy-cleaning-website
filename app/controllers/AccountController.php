@@ -4,6 +4,8 @@ use Intervention\Image\ImageManager;
 
 class AccountController extends PageController{
 
+	private $acceptableImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/tiff'];
+
 	public function __construct($dbc){
 
 		//Run the parent constructer
@@ -73,9 +75,9 @@ class AccountController extends PageController{
 			$this->dbc->query( $sql );
 
 			if( $this->dbc->affected_rows ) {
-				$this->data['postMessage'] = 'Success!';
+				$this->data['recipeUploadMessage'] = 'Success!';
 			} else {
-				$this->data['postMessage'] = 'Something went wrong!';
+				$this->data['recipeUploadMessage'] = 'Something went wrong!';
 			}
 		}
 	}
@@ -115,7 +117,18 @@ class AccountController extends PageController{
 		if ( strlen ( $recipemethod ) == 0 ){
 			$this->data['methodMessage'] = '<p>Required field</p>' ;
 			$totalErrors++;
-		} 
+		}
+
+		// Make sure the user has provided an image
+		if( in_array( $_FILES['image']['error'], [1,3,4] ) ) {
+			// Show error message
+			// Use a switch to generate the appropriate error message
+			$this->data['imageMessage'] = 'Image failed to upload';
+			$totalErrors++;
+		} elseif( !in_array( $_FILES['image']['type'], $this->acceptableImageTypes ) ) {
+			$this->data['imageMessage'] = 'Must be an image (jpg, gif, png, tiff etc)';
+			$totalErrors++;
+		}
 
 		//If there are no errors
 		if( $totalErrors == 0 ) {
@@ -149,16 +162,16 @@ class AccountController extends PageController{
 
 			// SQL (INSERT)
 			$sql = "INSERT INTO recipe_database (user_id, title, description, method image)
-					VALUES ($userID, '$recipetitle', '$recipedesc', '$recipemethod' '$fileName$fileExtension') ";
+					VALUES ($userID, '$recipetitle', '$recipedesc', '$recipemethod' '$fileName$fileExtension')";
 				
 			//Make sure it worked
 			$this->dbc->query( $sql );
 
 			// Make sure it worked
 			if( $this->dbc->affected_rows ) {
-				$this->data['postMessage'] = 'Success!';
+				$this->data['recipeMessage'] = 'Success!';
 			} else {
-				$this->data['postMessage'] = 'Something went wrong!';
+				$this->data['recipeMessage'] = 'Something went wrong!';
 			}
 		}
 	}
