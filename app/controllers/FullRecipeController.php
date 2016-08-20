@@ -54,7 +54,7 @@ class FullRecipeController extends PageController{
 		}
 
 		//Get all the comments
-		$sql = "SELECT comments.user_id, comment, CONCAT(first_name, ' ', last_name) AS author
+		$sql = "SELECT comments.id, comments.user_id, comment, CONCAT(first_name, ' ', last_name) AS author
 		FROM comments
 		JOIN users
 		ON comments.user_id = users.user_id

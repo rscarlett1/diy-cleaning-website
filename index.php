@@ -80,6 +80,11 @@ switch($page) {
 		$controller = new FullRecipeController ($dbc);
 	break;
 
+	case 'edit-comments':
+		require 'app/controllers/EditCommentsController.php';
+		$controller = new EditCommentsController ($dbc);
+	break;
+
 	case 'logout':
 		unset($_SESSION['user_id']);
 		header('Location: index.php');

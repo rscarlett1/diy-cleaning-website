@@ -22,9 +22,7 @@ class AccountController extends PageController{
 
 		//Did the user submit a new recipe
 		if( isset($_POST['submit-recipe']) ){
-			$this->processNewRecipe();
-
-
+			$this->processUploadedRecipe();
 		}
 
 	}
@@ -82,7 +80,7 @@ class AccountController extends PageController{
 		}
 	}
 
-	private function processNewRecipe() {
+	private function processUploadedRecipe() {
 
 		//echo '<pre>';
 		//print_r($_POST);
@@ -170,6 +168,7 @@ class AccountController extends PageController{
 			// Make sure it worked
 			if( $this->dbc->affected_rows ) {
 				$this->data['recipeMessage'] = 'Success!';
+				header('Location: index.php?page=upload-recipe');
 			} else {
 				$this->data['recipeMessage'] = 'Something went wrong!';
 			}

@@ -34,7 +34,7 @@ class RecipesController extends PageController{
 		$type = $_GET['type'];
 
 		//Prepare some SQL
-		$sql = "SELECT recipe_id, title, description, category, first_name, last_name, recipe_database.user_id 
+		$sql = "SELECT recipe_id, title, description, category, image, first_name, last_name, recipe_database.user_id 
 				FROM recipe_database
 				JOIN users
 				ON recipe_database.user_id = users.user_id

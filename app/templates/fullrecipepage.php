@@ -20,14 +20,14 @@
           <div class=" col-xs-12 col-sm-12 col-md-12">
             <div class="thumbnail">
 
-            <h1><?= $fullrecipepage['title'] ?> </h1>
-            <p><?= $fullrecipepage['description'] ?></p>
-            <p><?= $fullrecipepage['method'] ?></p>
+            <h1><?= htmlentities($fullrecipepage['title']) ?> </h1>
+            <p><?= htmlentities($fullrecipepage['description']) ?></p>
+            <p><?= htmlentities($fullrecipepage['method']) ?></p>
 
-            <img img class="img-responsive" src="<?= $item['image'] ?>" alt="...">
+            <img img class="img-responsive" src="<?= $fullrecipepage['image'] ?>" alt="...">
       
             <div class="caption">
-                <p>Posted By:<?= $fullrecipepage['first_name'].' '.$fullrecipepage['last_name'] ?></p>
+                <p>Posted By:<?= htmlentities($fullrecipepage['first_name'].' '.$fullrecipepage['last_name']) ?></p>
             </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
   </div>
 
 
- 
+ <?php var_dump($allComments) ?>
 
 <section>
     <div class="container">
@@ -70,12 +70,10 @@
                       if( isset($_SESSION['user_id']) ) {
 
                         // Does this user own the comment?
-                        if( $_SESSION['user_id'] == $comment['user_id'] || $_SESSION['privilege'] == 'admin' ) {
-
+                        if( $_SESSION['user_id'] == $comment['user_id'] ){
                           // Yes! This user owns the comment!
                           echo 'Delete';
-                          echo '<a href="index.php?page=edit-comment&recipe_id='.$comment['user_id'].'">Edit</a>';
-
+                          echo '<a href="index.php?page=edit-comments&id='.$comment['id'].'">Edit</a>';
                         }
 
                       }
