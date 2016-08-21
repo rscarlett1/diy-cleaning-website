@@ -75,7 +75,7 @@
 				<div id="post-content" class="col-xs-6 col-md-4 post-background">
 
 					<h2 id="sub-post-heading">Why is White Vinegar A Great Natural Cleaner</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem illo rerum, error nobis est dolorum, fuga excepturi ullam, nam voluptatum incidunt dolore voluptas hic! Modi similique aut temporibus ullam alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolores necessitatibus, eaque culpa nam sint ab, nulla magni harum error dicta aspernatur tempora, ipsum ex adipisicing elit. Dolorum ipsum iste itaque, rerum nostrum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem illo rerum, error nobis est dolorum, fuga excepturi ullam, nam voluptatum incidunt dolore voluptas hic! Modi similique aut temporibus ullam alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolores necessitatibus, eaque culpa nam sint ab, nulla magni harum error dicta aspernatur tempora, ipsum ex adipisicing elit. Dolorum ipsum iste itaque, rerum</p>
 				</div>
 
 				<div id="advertising" class="col-xs-6 col-md-4">
@@ -109,11 +109,11 @@
 				<div id="post-content" class="col-xs-6 col-md-4 post-background">
 
 					<h2 id="sub-post-heading">Why is White Vinegar A Great Natural Cleaner</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem illo rerum, error nobis est dolorum, fuga excepturi ullam, nam voluptatum incidunt dolore voluptas hic! Modi similique aut temporibus ullam alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolores necessitatibus, eaque culpa nam sint ab, nulla magni harum error dicta aspernatur tempora, ipsum ex adipisicing elit. Dolorum ipsum iste itaque, rerum nostrum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem illo rerum, error nobis est dolorum, fuga excepturi ullam, nam voluptatum incidunt dolore voluptas hic! Modi similique aut temporibus ullam alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolores necessitatibus, eaque culpa nam sint ab, nulla magni harum error dicta aspernatur tempora, ipsum ex adipisicing elit. Dolorum ipsum iste itaque, rerum</p>
 				</div>
 
 				<div id="advertising" class="col-xs-6 col-md-4">
-					<img src="img/advertising/solor-advertising.jpg" height="350" width="350" >
+					<img src="img/advertising/solor-advertising.jpg" height="250" width="350" >
 				</div>
 		</div>
 </main>
