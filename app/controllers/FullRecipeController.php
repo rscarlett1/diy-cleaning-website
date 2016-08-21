@@ -34,7 +34,7 @@ class FullRecipeController extends PageController{
 
 		//Get info about this recipe
 
-		$sql = "SELECT recipe_id, title, description, method, image, first_name, last_name
+		$sql = "SELECT recipe_id, title, description, method, image, first_name, last_name, recipe_database.user_id
 				FROM recipe_database
 				JOIN users
 				ON recipe_database.user_id = users.user_id
@@ -50,7 +50,6 @@ class FullRecipeController extends PageController{
 		} else {
 			//yay all good
 			$this->data['fullrecipepage'] = $result->fetch_all(MYSQLI_ASSOC);
-			
 		}
 
 		//Get all the comments

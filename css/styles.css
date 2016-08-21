@@ -85,7 +85,6 @@ nav ul.nav.navbar-nav li{
 	margin: 0 auto;
 }
 
-
 #heading{
 	color: #ffdd00;
 	text-align: center;
@@ -191,7 +190,6 @@ nav ul.nav.navbar-nav li{
 	padding: 10px;
 }
 
-
 .btn{
 	background-color: #81c2e2;
 	border-radius: 10px;
@@ -204,8 +202,6 @@ nav ul.nav.navbar-nav li{
 .images-wwyltc{
 	margin: 0 auto;
 }
-
-
 
 #bathroom-image{
 	margin: 0 auto;
@@ -355,6 +351,14 @@ nav ul.nav.navbar-nav li{
 #image-recipe-upload{
 	padding-left: 500px;
 	padding-bottom: 20px;
+}
+
+.comments-padding{
+	padding-left: 30px;
+}
+
+#full-recipe-heading{
+	color: #ffdd00;
 }
 
 
