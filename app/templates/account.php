@@ -60,20 +60,20 @@
 	    		<h2 class="upload-header">Upload Your Own DIY Cleaning Recipes</h2>
 		    		<div class="form-group">
 		    			<label for="title">Title: </label>
-		    			<input  class="form-control" type="text" name="recipe-title" id="recipe-title">
+		    			<input  class="form-control" type="text" name="recipe-title" id="recipe-title" value="<?= isset($_POST['title']) ? $_POST['title'] : '' ?>">
 		    			<?= isset($titleMessage) ? $titleMessage : '' ?>
 
 		    		</div>
 		    	
 					<div class="form-group">
 						<label for"desc">Description</label>
-						<textarea  class="form-control" name="recipe-desc" cols"5" rows="10"></textarea>
+						<textarea  class="form-control" name="recipe-desc" cols"5" rows="10" value="<?= isset($_POST['description']) ? $_POST['description'] : '' ?>"></textarea>
 						<?= isset($descMessage) ? $descMessage : '' ?>
 					</div>
 
 					<div class="form-group">
 						<label for"method">Method</label>
-						<textarea  class="form-control" name="recipe-methods" cols"80" rows="10"></textarea>
+						<textarea  class="form-control" name="recipe-methods" cols"80" rows="10" value="<?= isset($_POST['method']) ? $_POST['method'] : '' ?>"></textarea>
 						<?= isset($methodMessage) ? $methodMessage : '' ?>
 					</div>
 
@@ -86,7 +86,7 @@
 
 					
 					<div class="form-group">
-					<input type="button" class="btn btn-default" type="submit" name="submit-recipe" value="Submit">
+					<input class="btn btn-default" type="submit" name="submit-recipe" value="Submit">
 					<?= isset($recipeUploadMessage) ? $recipeUploadMessage : '' ?>
 					</div>
 				</form>

@@ -18,21 +18,36 @@ class EditPostController extends PageController{
 	}
 
 	public function buildHTML() {
-		//Instantiate (create instance of) Plates library
-		$plates = new League\Plates\Engine('app/templates');
 
-		echo $this->plates->render('edit-post');
+
+		echo $this->plates->render('edit-post', $this->data);
 	}
 
 	private function getPostInfo(){
 
-		//Get the recipe id fron the Get array
-		$postID = $this->dbc->real_escape_string($_GET['user_id']);
+		//Get the recipe id from the Get array
+		$recipeID = $this->dbc->real_escape_string($_GET['id']);
 
 		//Get the User ID
 		$userID = $_SESSION['user_id'];
 
-		$sql = "SELECT ";
+		//Prepare the query
+		$sql = "SELECT user_id, title, description, method, image 
+				FROM recipe_database 
+				WHERE recipe_id = $recipeID
+				AND user_id = $userID";
+
+		$result = $this->dbc->query($sql);
+
+		//If the query failed
+		if(!$result || $result->num_rows == 0 ){
+			//Send the user back to the post page
+			//OR the post was deleted
+			header('Location: index.php?page=fullrecipepage&id=$recipeID');
+
+		} else {
+			$this->data['post'] = $result->fetch_assoc();
+		}
 
 
 

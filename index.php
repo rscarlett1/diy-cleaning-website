@@ -85,6 +85,11 @@ switch($page) {
 		$controller = new EditCommentsController ($dbc);
 	break;
 
+	case 'edit-post':
+		require 'app/controllers/EditPostController.php';
+		$controller = new EditPostController ($dbc);
+	break;
+
 	case 'logout':
 		unset($_SESSION['user_id']);
 		header('Location: index.php');
