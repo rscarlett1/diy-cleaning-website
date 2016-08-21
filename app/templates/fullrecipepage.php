@@ -11,7 +11,7 @@
 
 
 <main>
-
+<?php var_dump($fullrecipepage) ?>
 
 <div class="container">
   <div class="row">
@@ -27,7 +27,29 @@
             <img img class="img-responsive" src="<?= $fullrecipepage['image'] ?>" alt="...">
       
             <div class="caption">
-                <p><strong>Posted By: </strong><?= htmlentities($fullrecipepage['first_name'].' '.$fullrecipepage['last_name']) ?></p>
+              <ul>
+                <li><strong>Posted By: </strong><?= htmlentities($fullrecipepage['first_name'].' '.$fullrecipepage['last_name']) ?></li>
+                <?php
+
+                  if( $_SESSION['user_id'] == $fullrecipepage['user_id'] ){
+                    // You own post!
+                  ?>
+            <li>
+              <a href="index.php?page=edit-post&id=<?= $_GET['recipe_id'] ?>">Edit</a>
+            </li>
+            <li>
+              <button id="delete-post">Delete</button>
+              <div id="delete-post-options">
+                <a href="<?= $_SERVER['REQUEST_URI'] ?>&delete">Yes</a> / <button>No</button>
+              </div>
+            </li>
+                  <?php
+                }
+
+              
+
+            ?>
+          </ul>
             </div>
         </div>
       </div>
@@ -58,6 +80,9 @@
 
                 <?= isset($recipeCommentMessage) ? $recipeCommentMessage : '' ?>
             </form>
+
+
+
 
             <?php foreach($allComments as $comment): ?>
 

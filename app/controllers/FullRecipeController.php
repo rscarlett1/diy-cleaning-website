@@ -13,7 +13,6 @@ class FullRecipeController extends PageController{
 		//Did the user add a comment
 		if( isset( $_POST['new-comment'])){
 			$this->processNewComment();
-
 		}
 
 		$this->getFullRecipeData();
@@ -21,7 +20,7 @@ class FullRecipeController extends PageController{
 
 	public function buildHTML() {
 		//Instantiate (create instance of) Plates library
-		$plates = new League\Plates\Engine('app/templates');
+		//$plates = new League\Plates\Engine('app/templates');
 
 		echo $this->plates->render('fullrecipepage', $this->data);
 	}
@@ -29,12 +28,10 @@ class FullRecipeController extends PageController{
 	private function getFullRecipeData(){
 
 		//Filter the id
-
 		$fullrecipeID = $this->dbc->real_escape_string($_GET['recipe_id']);
 
 		//Get info about this recipe
-
-		$sql = "SELECT recipe_id, title, description, method, image, first_name, last_name, recipe_database.user_id
+			$sql = "SELECT recipe_id, title, description, method, image, first_name, last_name, recipe_database.user_id 
 				FROM recipe_database
 				JOIN users
 				ON recipe_database.user_id = users.user_id
@@ -42,7 +39,7 @@ class FullRecipeController extends PageController{
 
 		//Run the SQL
 		$result = $this->dbc->query($sql);
-
+		
 		//make sure the query worked		
 		if( !$result || $result->num_rows == 0 ){ 
 			//Redirect user to 404 page
@@ -50,6 +47,8 @@ class FullRecipeController extends PageController{
 		} else {
 			//yay all good
 			$this->data['fullrecipepage'] = $result->fetch_all(MYSQLI_ASSOC);
+
+			
 		}
 
 		//Get all the comments

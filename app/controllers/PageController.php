@@ -26,7 +26,6 @@ abstract class PageController{
 			//Redirect the user to the login page
 			header('Location: index.php?page=home');
 		}
-
 	}
 
 	
@@ -34,9 +33,6 @@ abstract class PageController{
 	public function logoff($dbc){
 
 	//logoff has to be on all pages	
-
-
-
 	}
 
 
