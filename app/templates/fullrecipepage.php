@@ -35,21 +35,25 @@
       <?php endforeach; ?>
   </div>
 
-
+<div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
  <?php var_dump($allComments) ?>
 
 <section>
     <div class="container">
       <div class="row">
            <div class=" col-xs-12 col-sm-12 col-md-12"> 
-              <h2>Comments: (<?= count($allComments) ?>)</h2>
+              
 
-                <form action="index.php?page=fullrecipepage&recipe_id=<?= $_GET['recipe_id'] ?>" method="post">
+                <form class="form-group" action="index.php?page=fullrecipepage&recipe_id=<?= $_GET['recipe_id'] ?>" method="post">
+                <h2>Comments: (<?= count($allComments) ?>)</h2>
                   
-                    <div class="form-group">
+                  <div class="form-group">
                     <label for="comment">Please write a comment: </label>
                     <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
-                    </div>
+                  </div>
 
                     <?= isset($commentMessage) ? $commentNameMessage : '' ?>
 
