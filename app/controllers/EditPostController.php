@@ -2,7 +2,7 @@
 
 class EditPostController extends PageController{
 
-
+	
 	public function __construct($dbc){
 
 		//Run the parent constructer
