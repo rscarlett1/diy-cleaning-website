@@ -32,130 +32,106 @@
 
  ?>
 <div class="container-fluid">
-	<nav>
-			<div class="row" id="logo">
+	<div class="row" id="logo">
 
-			
-				<div class= "col-md-4" >
-					<a href="./"><img src="img/logo.png" height="125" width="500"></a>
-				</div>
-
-				<div class="col-md-4">
-					<div id="follow-us">
-					<p><strong>Follow Us On:</strong></p>	
-					</div>
-
-					<div id="icon">
-						<i class="fa fa-facebook-official" aria-hidden="true"></i>
-						<i class="fa fa-twitter" aria-hidden="true"></i>
-						<i class="fa fa-envelope-o" aria-hidden="true"></i>
-						<i class="fa fa-pinterest-square" aria-hidden="true"></i>
-						<i class="fa fa-google-plus-square" aria-hidden="true"></i>
-					</div>
-
-					<form id="search" class="navbar-form navbar-left" role="search">
-				        <div class="form-group">
-				          <input type="text" class="form-control" placeholder="Search">
-				        </div>
-				    </form>
-				</div>
-
-				<div class="col-md-4">
-					<?= $this->insert('nav') ?>
-				</div>
-			</div>
-
-		<div class="row container">
-			<div class="navbar">
-		    <!-- Collect the nav links, forms, and other content for toggling -->
-			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			      
-			      <ul class="nav navbar-nav">
-			        <li class="diy-menu"><a href="index.php?page=home">Home<span class="sr-only">(current)</span></a></li>
-			        <li class="diy-menu"><a href="index.php?page=about-us">About Us</a></li>
-			        <!-- <li class="active diy-menu"><a href="">What Would You Like To Clean</a></li> -->
-					
-					      <li class="dropdown nav navbar-nav">
-				          <a href="index.php?page=login" class="dropdown-toggle diy-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">What Would You Like To Clean<span class="caret"></span></a>
-				          <ul class="dropdown-menu">
-				            <li class="diy-menu"><a href="index.php?page=login.php">Kitchen</a></li>
-				            <li class="diy-menu"><a href="index.php?page=login.php">Laundry</a></li>
-				            <li class="diy-menu"><a href="index.php?page=login.php">Bathroom and Toilet</a></li>
-				            <li class="diy-menu"><a href="index.php?page=login.php">Garage</a></li>
-				          </ul>
-				        </li>
-
-				      <li class="diy-menu"><a href="index.php?page=contact.php">Contact Us</a></li>
-			      </ul>
-			    </div>   	      
-			</div>
+		<div class= "col-md-4" >
+			<a href="./"><img src="img/logo.png" height="125" width="500"></a>
 		</div>
-	</nav>
+
+		<div class="col-md-4">
+			<div id="follow-us">
+			<p><strong>Follow Us On:</strong></p>	
+			</div>
+
+			<div id="icon">
+				<i class="fa fa-facebook-official" aria-hidden="true"></i>
+				<i class="fa fa-twitter" aria-hidden="true"></i>
+				<i class="fa fa-envelope-o" aria-hidden="true"></i>
+				<i class="fa fa-pinterest-square" aria-hidden="true"></i>
+				<i class="fa fa-google-plus-square" aria-hidden="true"></i>
+			</div>
+
+			<form id="search" class="navbar-form navbar-left" role="search">
+		        <div class="form-group">
+		          <input type="text" class="form-control" placeholder="Search">
+		        </div>
+		    </form>
+		</div>
+
+		<div class="col-md-4">
+			<?= $this->insert('nav') ?>
+		</div>
+	</div>
+</div>
 
 
+		
+<?php echo $this->insert('bar') ?>
 
 
 
 <?php echo $this->section('content') ?>
 
-<footer>	
+<footer>
 
-	<div class="row fluid-container" id="footer-background">
-			
-		<div class= "col-md-4 container">
-			<div class="why-change" id="address">
-						<address>
-							  <strong>DIY Home Cleaning</strong><br>
-							  129 California Drive<br>
-							 Totara Park<br>
-							  <abbr title="Phone">Ph:</abbr> (04) 456-7890
-						</address>
+	<div class="fluid-container">
+		<div class="row" id="footer-background">
+				
+			<div class= "col-md-4">
+				<div class="why-change" id="address">
+							<address>
+								  <strong>DIY Home Cleaning</strong><br>
+								  129 California Drive<br>
+								 Totara Park<br>
+								  <abbr title="Phone">Ph:</abbr> (04) 456-7890
+							</address>
 
-						<address>
-							  <strong>Email:</strong><br>
-							  <a href="mailto:#">diycleaning@gmail.com</a>
-						</address>
+							<address>
+								  <strong>Email:</strong><br>
+								  <a href="mailto:#">diycleaning@gmail.com</a>
+							</address>
+				</div>
+			</div>
+
+		<div class="col-md-4">
+			<div id="navigate">
+							<ul class="list-unstyled">
+				  			<li><strong>Navigate Our Website</strong></li>
+				  			<br>
+				  			<li><a href="wwyltc.html">What Would You Like To Clean</a></li>
+				  			<li><a href="about-us.html">About Us</a></li>
+				  			<li><a href="contact-us.html">Contact Us</a></li>
+				  			<li><a href="#">Archived Posts</a></li>
+				  			<li><a href="#">Terms and Conditions</a></li>
+							</ul>	
 			</div>
 		</div>
 
-	<div class="col-md-4 container">
-		<div id="navigate">
-						<ul class="list-unstyled">
-			  			<li><strong>Navigate Our Website</strong></li>
-			  			<br>
-			  			<li><a href="wwyltc.html">What Would You Like To Clean</a></li>
-			  			<li><a href="about-us.html">About Us</a></li>
-			  			<li><a href="contact-us.html">Contact Us</a></li>
-			  			<li><a href="#">Archived Posts</a></li>
-			  			<li><a href="#">Terms and Conditions</a></li>
-						</ul>	
-		</div>
-	</div>
+			<div class= "col-md-4">
+				<div id="subscribe">
+					<form>
+						<div>
+							<strong>Subscribe To Our Newsletter</strong><br><br>
+						</div>
 
-		<div class= "col-md-4 container">
-			<div id="subscribe">
-				<form>
-					<div>
-						<strong>Subscribe To Our Newsletter</strong><br><br>
-					</div>
+						<div class="form-group align">
+						    <label for="exampleInputEmail1">Email address:</label>
+						    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+						</div>
 
-					<div class="form-group align">
-					    <label for="exampleInputEmail1">Email address:</label>
-					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-					</div>
+						 <div class="form-group">
+						    <label for="exampleInputPassword1">First Name:</label>
+						    <input type="first-name" class="form-control" id="exampleInputPassword1" placeholder="First Name">
+						</div>
 
-					 <div class="form-group">
-					    <label for="exampleInputPassword1">First Name:</label>
-					    <input type="first-name" class="form-control" id="exampleInputPassword1" placeholder="First Name">
-					</div>
-
-					  <div class="form-group">
-					    <label for="exampleInputPassword1">Last Name:</label>
-					    <input type="last-name" class="form-control" id="exampleInputPassword1" placeholder="Last Name">
-					</div>
-					  
-					  <button type="submit" >Subscribe</button>
-				</form>
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">Last Name:</label>
+						    <input type="last-name" class="form-control" id="exampleInputPassword1" placeholder="Last Name">
+						</div>
+						  
+						  <button type="submit" >Subscribe</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

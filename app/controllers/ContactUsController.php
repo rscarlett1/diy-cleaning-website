@@ -1,6 +1,6 @@
 <?php
 
-class AboutUsController extends PageController{
+class ContactUsController extends PageController{
 
 
 	public function __construct($dbc){
@@ -16,7 +16,7 @@ class AboutUsController extends PageController{
 		//Instantiate (create instance of) Plates library
 		$plates = new League\Plates\Engine('app/templates');
 
-		echo $this->plates->render('about-us');
+		echo $this->plates->render('contact-us');
 	}
 
 	
