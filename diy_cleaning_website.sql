@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Aug 22, 2016 at 01:53 am
--- Server version: 5.6.20
--- PHP Version: 5.5.15
+-- Host: 127.0.0.1
+-- Generation Time: Aug 22, 2016 at 11:40 AM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `diy_cleaning_website`
@@ -26,14 +26,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `comments`
 --
 
-CREATE TABLE IF NOT EXISTS `comments` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `comments` (
+  `id` int(10) UNSIGNED NOT NULL,
   `comment` varchar(2000) NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `recipe_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `recipe_id` int(10) UNSIGNED NOT NULL,
   `ceated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `comments`
@@ -66,16 +66,16 @@ INSERT INTO `comments` (`id`, `comment`, `user_id`, `recipe_id`, `ceated_at`, `u
 -- Table structure for table `recipe_database`
 --
 
-CREATE TABLE IF NOT EXISTS `recipe_database` (
-`recipe_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+CREATE TABLE `recipe_database` (
+  `recipe_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `category` enum('Kitchen','Bathroom','Laundry','Garage','Other') NOT NULL DEFAULT 'Other',
   `method` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `status` enum('Pending','Approved','Declined','') NOT NULL DEFAULT 'Pending'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `recipe_database`
@@ -91,7 +91,14 @@ INSERT INTO `recipe_database` (`recipe_id`, `user_id`, `title`, `description`, `
 (16, 3, 'Economic laundry powder', 'Great easy to make economical washing powder', 'Laundry', '1 C washing soda\r\n1/2 c borax\r\n1 bar soap', 'http://placehold.it/320x400', 'Pending'),
 (17, 3, 'Bug Off for cars', 'Put this as a windscreen cleaner in the car', 'Garage', '1 T Baking Powder\r\n1 T white vineigar\r\n1 t lemon juice', 'http://placehold.it/320x400', 'Approved'),
 (18, 3, 'All over surface spray', 'Clen all surfaces of the house', 'Other', '3 T Baking soda\r\n1 T white vinegar\r\n1 t lemon juice\r\n3 drops of your favourite essential oil', 'http://placehold.it/320x400', 'Approved'),
-(20, 3, 'Brighten Clothes With This Awesome Dry Laundry Booster', 'Brighten dingy laundry with this homemade eco-friendly dry laundry booster. Instead of paying for commercial brands, you can easily make your own with basic ingredients found at any grocery store. And once you pick up the basic ingredients, each batch costs cents to make. Keep your all-natural booster contained in a small jar so it is handy — and seriously potent — when you''re doing laundry.', 'Laundry', 'What You''ll Need:\r\n\r\n2 cups washing soda\r\n1/4 cup hydrogen peroxide\r\nMixing bowl\r\nFork\r\nSmall container\r\nDirections:\r\n\r\nThink of laundry booster as your detergent''s best friend. Using washing soda really amps up this laundry helper, while hydrogen peroxide works together with your detergent to help clean your garments.\r\n\r\nMeasure and add the washing soda to a mixing bowl, and then add the hydrogen peroxide. Gently stir with a fork.\r\n\r\nUse the fork to break up any lumps, creating a sand-like texture. When the mixture interacts with water, it creates bubbles of oxygen, which help lift tough stains and gently whiten whites.\r\n\r\nPour the booster into a small container with a lid, and you''re all set for tackling the laundry.\r\n\r\nFor tough stains and dingy whites, soak clothes in warm water mixed with 1/4 cup of the laundry booster for 20 minutes or overnight before washing. And you can keep things all natural and make your own homemade eco-friendly liquid laundry detergent. In a rush? Simply add 1/4 cup of booster directly to your next load of laundry to give your detergent a bit of a kick.\r\n\r\n', 'img/uploads/original/laundry-booster.jpeg', 'Approved');
+(20, 3, 'Brighten Clothes With This Awesome Dry Laundry Booster', 'Brighten dingy laundry with this homemade eco-friendly dry laundry booster. Instead of paying for commercial brands, you can easily make your own with basic ingredients found at any grocery store. And once you pick up the basic ingredients, each batch costs cents to make. Keep your all-natural booster contained in a small jar so it is handy — and seriously potent — when you''re doing laundry.', 'Laundry', 'What You''ll Need:\r\n\r\n2 cups washing soda\r\n1/4 cup hydrogen peroxide\r\nMixing bowl\r\nFork\r\nSmall container\r\nDirections:\r\n\r\nThink of laundry booster as your detergent''s best friend. Using washing soda really amps up this laundry helper, while hydrogen peroxide works together with your detergent to help clean your garments.\r\n\r\nMeasure and add the washing soda to a mixing bowl, and then add the hydrogen peroxide. Gently stir with a fork.\r\n\r\nUse the fork to break up any lumps, creating a sand-like texture. When the mixture interacts with water, it creates bubbles of oxygen, which help lift tough stains and gently whiten whites.\r\n\r\nPour the booster into a small container with a lid, and you''re all set for tackling the laundry.\r\n\r\nFor tough stains and dingy whites, soak clothes in warm water mixed with 1/4 cup of the laundry booster for 20 minutes or overnight before washing. And you can keep things all natural and make your own homemade eco-friendly liquid laundry detergent. In a rush? Simply add 1/4 cup of booster directly to your next load of laundry to give your detergent a bit of a kick.\r\n\r\n', 'img/uploads/original/laundry-booster.jpeg', 'Approved'),
+(22, 3, 'go', 'fsfsdfsdf', 'Other', 'dfgdgdfgdgdfg', '57ba90399c042.jpg', 'Pending'),
+(23, 3, 'Test', 'dfsfsdfsdf', 'Other', 'Test me', '57ba9103d7349.jpg', 'Pending'),
+(24, 3, 'Test', 'dfsfsdfsdf', 'Other', 'Test me', '57ba9103d7349.jpg', 'Pending'),
+(25, 3, 'coffee break', 'go coffee', 'Other', 'here i am', '57ba98309379a.jpg', 'Pending'),
+(26, 3, 'coffee break', 'go coffee', 'Other', 'here i am', '57ba993c32e81.jpg', 'Pending'),
+(27, 3, 'coffee break', 'go coffee', 'Other', 'here i am', '57ba994cce0fc.jpg', 'Pending'),
+(28, 3, 'Computer', 'for me', 'Other', 'now', '57ba999c3ea3b.jpg', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -99,13 +106,13 @@ INSERT INTO `recipe_database` (`recipe_id`, `user_id`, `title`, `description`, `
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`user_id` int(10) unsigned NOT NULL,
+CREATE TABLE `users` (
+  `user_id` int(10) UNSIGNED NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(200) NOT NULL,
   `password` varchar(60) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -125,19 +132,24 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `password`) 
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
- ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`), ADD KEY `recipe_id` (`recipe_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `recipe_id` (`recipe_id`);
 
 --
 -- Indexes for table `recipe_database`
 --
 ALTER TABLE `recipe_database`
- ADD UNIQUE KEY `recipe_id_2` (`recipe_id`), ADD KEY `recipe_id` (`recipe_id`), ADD KEY `user_id` (`user_id`);
+  ADD UNIQUE KEY `recipe_id_2` (`recipe_id`),
+  ADD KEY `recipe_id` (`recipe_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`user_id`), ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -147,17 +159,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `recipe_database`
 --
 ALTER TABLE `recipe_database`
-MODIFY `recipe_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `recipe_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
@@ -166,14 +178,14 @@ MODIFY `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipe_database` (`recipe_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipe_database` (`recipe_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `recipe_database`
 --
 ALTER TABLE `recipe_database`
-ADD CONSTRAINT `recipe_database_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `recipe_database_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
