@@ -1,4 +1,6 @@
-
+			echo '<pre>';
+		 	print_r ($_POST);
+			die('ready');
 			
 			// SQL (INSERT)
 			$sql = "INSERT INTO recipe_database (user_id, title, description, method, image)

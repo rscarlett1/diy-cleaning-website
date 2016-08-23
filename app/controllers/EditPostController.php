@@ -14,7 +14,6 @@ class EditPostController extends PageController{
 
 		//Did the user submit the edit form?
 		if( isset( $_POST['edit-post']) ){
-			die($_POST['edit-post']);
 			$this->processPostEdit();
 
 		}
@@ -61,10 +60,67 @@ class EditPostController extends PageController{
 	}
 
 	private function processPostEdit() {
-		echo '<pre>';
-		 print_r ($_POST);
-		die('ready');
-	}
+
+			// Validation
+			$totalErrors = 0;
+			
+			$title = $_POST['title'];
+			$desc = $_POST['desc'];
+			$method = $_POST['method'];
+
+			// Title
+			if( strlen($title) > 100 ) {
+				$totalErrors++;
+				$this->data['titleError'] = '<p>At must be less than 100 characters</p>';
+			}
+
+			// Description
+			if( strlen($desc) > 1000 ) {
+				$totalErrors++;
+				$this->data['descError'] = '<p>At most less than 1000 chatacters</p>';
+			}
+
+			if( strlen( $method ) == 0){
+				$totalErrors++;
+				$this->data['methodError'] = "<p>This is a required field</p>";
+			}
+
+
+			//If there are no errors
+			if( $totalErrors == 0 ) {
+
+				//Filter the data
+				$title = $this->dbc->real_escape_string($title);
+				$desc = $this->dbc->real_escape_string($desc);
+				$method = $this->dbc->real_escape_string($method);
+				$recipeID = $this->dbc->real_escape_string($_GET['id']);
+
+				//Prepare the SQL
+				$sql = "UPDATE recipe_database
+						SET title = '$title',
+							description = '$desc',
+							method = '$method'
+						WHERE recipe_id = '$recipeID
+						AND user_id = $userID'";
+
+			
+				$this->dbc->query($sql);
+
+				//Redirect the user to the post page
+				header("Location: index.php?page=fullrecipepage&recipe_id=$recipeID");
+
+
+			}
+
+		}
 
 
 }
+
+
+
+
+
+
+
+
