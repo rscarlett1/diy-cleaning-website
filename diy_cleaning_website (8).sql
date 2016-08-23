@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 23, 2016 at 02:05 am
+-- Generation Time: Aug 23, 2016 at 04:41 am
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `recipe_database` (
 --
 
 INSERT INTO `recipe_database` (`recipe_id`, `user_id`, `title`, `description`, `category`, `method`, `image`, `status`) VALUES
-(30, 3, 'clean house', 'no chenicals', 'Other', 'no chemicals', '57bb7f14cb6cc.jpg', 'Pending');
+(30, 3, 'cat', 'gggggg', 'Other', 'meow', '57bb7f14cb6cc.jpg', 'Pending');
 
 -- --------------------------------------------------------
 
