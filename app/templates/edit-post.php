@@ -12,7 +12,7 @@
 	<div class="container">
 	  <div class="row">
 	    <div class="col-xs-12" id="kitchen-posts">
-	    	
+	    	<h1>Edit post: <?= htmlentities($originalTitle) ?></h1>
 	    		<form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post" name="edit-post" id="edit-post" enctype="multipart/form-data"> 
 
 	    		
@@ -25,7 +25,7 @@
 		    	
 					<div class="form-group">
 						<label for"desc">Description</label>
-						<textarea  class="form-control" id="desc" name="desc" cols"5" rows="10"><?= $post['description'] ?></textarea>
+						<textarea  class="form-control" id="desc" name="description" cols"5" rows="10"><?= $post['description'] ?></textarea>
 						<?= isset($descError) ? $descError : '' ?>
 					</div>
 

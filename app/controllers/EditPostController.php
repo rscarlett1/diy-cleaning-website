@@ -15,7 +15,6 @@ class EditPostController extends PageController{
 		//Did the user submit the edit form?
 		if( isset( $_POST['edit-post']) ){
 			$this->processPostEdit();
-
 		}
 
 		//get info about the post
@@ -55,8 +54,6 @@ class EditPostController extends PageController{
 			$this->data['post'] = $result->fetch_assoc();
 		}
 
-
-
 	}
 
 	private function processPostEdit() {
@@ -65,7 +62,7 @@ class EditPostController extends PageController{
 			$totalErrors = 0;
 			
 			$title = $_POST['title'];
-			$desc = $_POST['desc'];
+			$desc = $_POST['description'];
 			$method = $_POST['method'];
 
 			// Title
@@ -109,13 +106,30 @@ class EditPostController extends PageController{
 				//Redirect the user to the post page
 				header("Location: index.php?page=fullrecipepage&recipe_id=$recipeID");
 
+				//what if user 
+				if( isset($_POST['edit-post']) ){
 
+				$this->data['post'] = $_POST;
+
+				//Use the original
+				$result = $result->fetch_assoc();
+
+				$this->data['originalTitle'] = $result['title'];
+				
+					
+				} else{
+					//use the original title
+					$result = $result->fetch_assoc();
+
+					$this->data['post'] = $result;
+
+					$this->data['originalTitle'] = $result['title'];
+				}	
 			}
 
-		}
-
-
+	}
 }
+
 
 
 

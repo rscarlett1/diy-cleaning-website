@@ -4,7 +4,7 @@
 
 <div  class="row container">
     <div class="col-xs-12">
-      <form id="login-form" action="<?= $_SERVER['REQUEST_URL'] ?>" method="post">
+      <form id="login-form" action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
         <h1>Login</h1>
 
         <button type="button" class="btn btn-primary">Facebook</button>
