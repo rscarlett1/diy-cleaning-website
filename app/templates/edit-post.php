@@ -11,9 +11,9 @@ article>
 	  <div class="row">
 	    <div class="col-xs-12" id="kitchen-posts">
 	    	
-	    		<form action="index.php?page=" method="post" name="edit-post" id="edit-post" enctype="multipart/form-data"> 
+	    		<form action="<?= $_SERVER['REQUEST_URL'] ?>" method="post" name="edit-post" id="edit-post" enctype="multipart/form-data"> 
 
-	    		<h2 class="upload-header">Edit Your Recipe <?= htmlentities($recipe['title']) ?></h2>
+	    		<h2 class="upload-header">Edit Your Recipe <?= htmlentities($post['title']) ?></h2>
 		    		<div class="form-group">
 		    			<label for="title">Title: </label>
 		    			<input  class="form-control" type="text" name="title" id="title" value="<?= $post['title'] ?>">
@@ -37,14 +37,16 @@ article>
 
 
 					<div class="form-group">
-						<label name="image" for="image">Image</label>
-		    			<input  class="form-control" type="file" name="image" id="image">
+						<img src="img/uploads/recipes/<?= $post['image'] ?>" name="image" for="image">
+						<input type="file" name="image">
+
+		    			
 		    			<?= isset($imageMessage) ? $imageMessage : '' ?>
 					</div>
 
 					
 					<div class="form-group">
-					<input type="button" class="btn btn-default" type="submit" name="submit-recipe" value="Submit">
+					<input class="btn btn-default" type="submit" name="edit-post" value="Submit">
 					<?= isset($recipeUploadMessage) ? $recipeUploadMessage : '' ?>
 					</div>
 				</form>

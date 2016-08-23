@@ -7,7 +7,7 @@
 ?>
 
 
-	<form class="form-group" action="index.php?page=edit-comments&id=<?= $_GET['id']?>" method="post">
+	<form class="form-group" action="<?= $_SERVER['REQUEST_URL'] ?>" method="post">
 	
 		<h1>Edit your comment</h1>
 		<label for="comment">Comment: </label>

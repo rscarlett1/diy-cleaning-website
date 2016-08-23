@@ -12,7 +12,14 @@ class EditPostController extends PageController{
 
 		$this->mustBeLoggedIn();
 
-		//get info aboutb the post
+		//Did the user submit the edit form?
+		if( isset( $_POST['edit-post']) ){
+			die($_POST['edit-post']);
+			$this->processPostEdit();
+
+		}
+
+		//get info about the post
 		$this->getPostInfo();
 
 	}
@@ -53,6 +60,11 @@ class EditPostController extends PageController{
 
 	}
 
+	private function processPostEdit() {
+		echo '<pre>';
+		 print_r ($_POST);
+		die('ready');
+	}
 
 
 }

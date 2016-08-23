@@ -58,7 +58,7 @@
 	  <div class="row">
 	    <div class="col-xs-12" id="kitchen-posts">
 	    	
-	    		<form action="index.php?page=account" method="post" name="new-recipe" id="recipe-post" enctype="multipart/form-data">
+	    		<form action="<?= $_SERVER['REQUEST_URL'] ?>" method="post" name="new-recipe" id="recipe-post" enctype="multipart/form-data">
 
 	    		<h2 class="upload-header">Upload Your Own DIY Cleaning Recipes</h2>
 		    		<div class="form-group">

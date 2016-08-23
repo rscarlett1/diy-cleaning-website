@@ -27,7 +27,7 @@
   <div class=" col-xs-12 col-sm-6 col-md-4">
     <div class="thumbnail">
 
-      <a href="index.php?page=fullrecipepage&recipesid=<?= $recipe['recipe_id'] ?>"><img img class="img-responsive" src="<?= $recipe['image'] ?>" alt="..."></a>
+      <a href="index.php?page=fullrecipepage&recipesid=<?= $recipe['recipe_id'] ?>"><img src="img/uploads/recipes/<?= $recipe['image'] ?>" class="img-responsive" src="<?= $recipe['image'] ?>" alt="..."></a>
       
 
       <div class="caption">

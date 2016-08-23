@@ -147,7 +147,7 @@ class AccountController extends PageController{
 			     $constraint->aspectRatio();
 			});
 
-			
+			$image->save("img/uploads/recipes/$fileName$fileExtension");
 
 						
 			//Filter the data
@@ -160,15 +160,14 @@ class AccountController extends PageController{
 			$userID = $_SESSION['user_id'];
 
 			// SQL (INSERT)
-			$sql = "INSERT INTO recipe_database (recipe_database.user_id, title, 		description, method, image)
-					VALUES ($userID, '$recipetitle', '$recipedesc', '$recipemethod', '$fileName$fileExtension')";
-
+			$sql = "INSERT INTO recipe_database (recipe_database.user_id, title, description, method, image)
+					VALUES ('$userID', '$recipetitle', '$recipedesc', '$recipemethod', '$fileName$fileExtension')";
 			$this->dbc->query( $sql );
 
 			// Make sure it worked
 			if( $this->dbc->affected_rows ) {
-				$this->data['recipeUploadMessage'] = 'Success!';
-				//header('Location: index.php?page=upload-recipe');
+				$recipe_id = $this->dbc->insert_id;
+				header("Location: index.php?page=fullrecipepage&recipe_id=$recipe_id");
 			} else {
 				$this->data['recipeUploadMessage'] = 'Something went wrong!';
 			}

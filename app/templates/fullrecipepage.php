@@ -24,7 +24,7 @@
             <p class="comments-padding"><?= htmlentities($fullrecipepage['description']) ?></p>
             <p class="comments-padding"><?= htmlentities($fullrecipepage['method']) ?></p>
 
-            <img img class="img-responsive" src="<?= $fullrecipepage['image'] ?>" alt="...">
+            <img img class="img-responsive" src="img/uploads/recipes/<?= $fullrecipepage['image'] ?>" alt="...">
       
             <div class="caption">
               <ul>
