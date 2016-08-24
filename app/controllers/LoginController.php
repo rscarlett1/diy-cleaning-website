@@ -7,6 +7,8 @@ class LoginController extends PageController{
 
 		//Make sure the PageControllers constructer still runs
 		parent::__construct();
+
+		$thismustBeLoggedOut();
 		
 		//Save database connection
 		$this->dbc = $dbc;
@@ -49,7 +51,7 @@ class LoginController extends PageController{
 
 			// Prepare SQL query
 
-			$sql = "SELECT user_id, password
+			$sql = "SELECT user_id, password, privilege
 					FROM users
 					WHERE email = '$filteredEmail' ";
 			// die($sql);
@@ -68,7 +70,9 @@ class LoginController extends PageController{
 				// If the result was good
 				if( $passwordResult == true ) {
 					// Log the user in
-					$_SESSION['user_id'] = $userData['user_id']; 
+					$_SESSION['user_id'] = $userData['user_id'];
+					$_SESSION['privilege'] = $userData['privilege'];
+
 					header('Location: index.php?page=what-to-clean');
 
 				} else {

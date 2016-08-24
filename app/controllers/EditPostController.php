@@ -130,26 +130,6 @@ class EditPostController extends PageController{
 
 				$recipeID = $this->dbc->real_escape_string($_GET['id']);
 
-				if( $_FILES['image']['name'] != '' ) {
-
-				// Instance of Intervention Image
-				$manager = new ImageManager();
-
-				// Get the file that was just uploaded
-				$image = $manager->make( $_FILES['image']['tmp_name'] );
-
-				$fileExtension = $this->getFileExtension( $image->mime() );
-
-				$fileName = uniqid();
-
-				$image->save("img/uploads/original/$fileName$fileExtension");
-
-				$image->resize(400, null, function ($constraint) {
-				     $constraint->aspectRatio();
-				});
-
-				$image->save("img/uploads/recipes/$fileName$fileExtension");
-
 				//Delete old images
 				//They are wasting space
 				$sql = "SELECT image FROM recipe_database WHERE recipe_id = $recipeID
@@ -157,16 +137,38 @@ class EditPostController extends PageController{
 
 				$result = $this->dbc->query($sql);
 
-
-				 //Extract the data
+				//Extract the data
 				$result = $result->fetch_assoc();
 				//Get the image name
 				$imageName = $result['image'];
 
-				unlink('img/uploads/original/$imageName');
-				unlink('img/uploads/recipes/$imageName');
+				if( $_FILES['image']['name'] != '' ) {
 
-			} 
+					// Instance of Intervention Image
+					$manager = new ImageManager();
+
+					// Get the file that was just uploaded
+					$image = $manager->make( $_FILES['image']['tmp_name'] );
+
+					$fileExtension = $this->getFileExtension( $image->mime() );
+
+					$fileName = uniqid();
+
+					$image->save("img/uploads/original/$fileName$fileExtension");
+
+					$image->resize(400, null, function ($constraint) {
+					     $constraint->aspectRatio();
+					});
+
+					$image->save("img/uploads/recipes/$fileName$fileExtension");
+
+					unlink("img/uploads/original/$imageName");
+					unlink("img/uploads/recipes/$imageName");
+
+					//Change the ImageName to be the new file names
+					$imageName = $fileName.$fileExtension;
+
+				} 
 
 				//Filter the data
 				$title = $this->dbc->real_escape_string($title);
@@ -179,7 +181,7 @@ class EditPostController extends PageController{
 				$sql = "UPDATE recipe_database
 						SET title = '$title',
 							description = '$desc',
-							image = '$image',
+							image = '$imageName',
 							method = '$method'
 						WHERE recipe_id = '$recipeID
 						AND user_id = $userID'";

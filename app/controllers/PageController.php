@@ -30,9 +30,16 @@ abstract class PageController{
 
 	
 
-	public function logoff($dbc){
+	public function mustBeLoggedOut($dbc){
 
-	//logoff has to be on all pages	
+	//logoff has to be on all pages
+
+		// If you are not logged in
+		if( isset($_SESSION['user_id']) ) {
+			// Redirect the user to the login page
+			header('Location: index.php?page=home');
+		}
+	
 	}
 
 

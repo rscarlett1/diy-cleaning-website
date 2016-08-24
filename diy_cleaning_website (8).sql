@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 23, 2016 at 04:41 am
+-- Generation Time: Aug 24, 2016 at 04:34 am
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -50,14 +50,15 @@ CREATE TABLE IF NOT EXISTS `recipe_database` (
   `method` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `status` enum('Pending','Approved','Declined','') NOT NULL DEFAULT 'Pending'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `recipe_database`
 --
 
 INSERT INTO `recipe_database` (`recipe_id`, `user_id`, `title`, `description`, `category`, `method`, `image`, `status`) VALUES
-(30, 3, 'cat', 'gggggg', 'Other', 'meow', '57bb7f14cb6cc.jpg', 'Pending');
+(30, 3, 'cow', 'poo', 'Other', 'head', '57bb7f14cb6cc.jpg', 'Approved'),
+(31, 3, 'Cleaner', 'clean the lounge', 'Bathroom', 'dfsfsfsd', '57bd06f22405c.jpg', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -70,18 +71,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `password` varchar(60) NOT NULL
+  `password` varchar(60) NOT NULL,
+  `privilege` enum('user','admin') NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `password`) VALUES
-(3, 'Raewynne', 'Scarlett', 'raewynne.scarlett@gmail.com', '$2y$10$4L4NiwVugHJr7.n2IyFADupQ5Sm6AHfaPNtkEPrerEjmrP/iIXW2y'),
-(4, 'Richard', 'hpa', 'richard.hpa@hotmail.com', '$2y$10$A8AzyVErNdGqis38oR/2V.cZtYtXngZyh.3Vx3oSir5HmHesnQfO2'),
-(5, 'Patrick', 'Scarlett', 'go@gmail.com', '$2y$10$yJlHVeL19Su/stc/revw9.CAVTPw3q/hCASt3bPgS25Cfq5D.8YNG'),
-(6, 'max', 'scarlett', 'max@diggers.com', 'password');
+INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `password`, `privilege`) VALUES
+(3, 'Raewynne', 'Scarlett', 'raewynne.scarlett@gmail.com', '$2y$10$4L4NiwVugHJr7.n2IyFADupQ5Sm6AHfaPNtkEPrerEjmrP/iIXW2y', 'admin'),
+(4, 'Richard', 'hpa', 'richard.hpa@hotmail.com', '$2y$10$A8AzyVErNdGqis38oR/2V.cZtYtXngZyh.3Vx3oSir5HmHesnQfO2', 'user'),
+(5, 'Patrick', 'Scarlett', 'go@gmail.com', '$2y$10$yJlHVeL19Su/stc/revw9.CAVTPw3q/hCASt3bPgS25Cfq5D.8YNG', 'user'),
+(6, 'max', 'scarlett', 'max@diggers.com', 'password', 'user');
 
 --
 -- Indexes for dumped tables
@@ -118,7 +120,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 -- AUTO_INCREMENT for table `recipe_database`
 --
 ALTER TABLE `recipe_database`
-MODIFY `recipe_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `recipe_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `users`
 --

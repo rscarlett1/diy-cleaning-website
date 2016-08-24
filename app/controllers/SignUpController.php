@@ -116,6 +116,7 @@ class SignUpController extends PageController {
 
 			// Log the user in
 			$_SESSION['user_id'] = $this->dbc->insert_id;
+			$_SESSION['privilege'] = 'user';
 
 			// Redirect the user to the what to clean page
 			header('Location: index.php?page=what-to-clean');
