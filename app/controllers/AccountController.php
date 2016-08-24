@@ -118,7 +118,7 @@ class AccountController extends PageController{
 		}
 
 		// Make sure the user has provided an image
-		if( in_array( $_FILES['image']['error'], [1,3,4] ) ) {
+		if( in_array( $_FILES['image']['error'], [1,3,] ) ) {
 			// Show error message
 			// Use a switch to generate the appropriate error message
 			$this->data['imageMessage'] = 'Image failed to upload';

@@ -1,6 +1,10 @@
 <?php
 
+use Intervention\Image\ImageManager;
+
 class EditPostController extends PageController{
+
+	private $acceptableImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/tiff'];
 
 	
 	public function __construct($dbc){
@@ -51,7 +55,29 @@ class EditPostController extends PageController{
 			header('Location: index.php?page=fullrecipepage&id=$recipeID');
 
 		} else {
-			$this->data['post'] = $result->fetch_assoc();
+			//what if user 
+			if( isset($_POST['edit-post']) ){
+
+				$this->data['post'] = $_POST;
+
+				//Use the original
+				$result = $result->fetch_assoc();
+
+				$this->data['originalTitle'] = $result['title'];
+
+				//Make sure we use the current image otherwise it disapears
+				$this->data['post']['image'] = $result['image'];
+			
+				
+			} else{
+				//use the original title
+				$result = $result->fetch_assoc();
+
+				$this->data['post'] = $result;
+
+				$this->data['originalTitle'] = $result['title'];
+			}
+
 		}
 
 	}
@@ -61,9 +87,9 @@ class EditPostController extends PageController{
 			// Validation
 			$totalErrors = 0;
 			
-			$title = $_POST['title'];
-			$desc = $_POST['description'];
-			$method = $_POST['method'];
+			$title = trim($_POST['title']);
+			$desc = trim($_POST['description']);
+			$method = trim($_POST['method']);
 
 			// Title
 			if( strlen($title) > 100 ) {
@@ -82,20 +108,78 @@ class EditPostController extends PageController{
 				$this->data['methodError'] = "<p>This is a required field</p>";
 			}
 
+			// Make sure the user has provided an image
+			if ( $_FILES['image']['name'] != ''){
+			
+				if( in_array( $_FILES['image']['error'], [1,3,] ) ) {
+					// Show error message
+					// Use a switch to generate the appropriate error message
+					$this->data['imageMessage'] = 'Image failed to upload';
+					$totalErrors++;
+				} elseif( !in_array( $_FILES['image']['type'], $this->acceptableImageTypes ) ) {
+					$this->data['imageMessage'] = 'Must be an image (jpg, gif, png, tiff etc)';
+					$totalErrors++;
+				}
+			}
+
+
+
 
 			//If there are no errors
 			if( $totalErrors == 0 ) {
+
+				$recipeID = $this->dbc->real_escape_string($_GET['id']);
+
+				if( $_FILES['image']['name'] != '' ) {
+
+				// Instance of Intervention Image
+				$manager = new ImageManager();
+
+				// Get the file that was just uploaded
+				$image = $manager->make( $_FILES['image']['tmp_name'] );
+
+				$fileExtension = $this->getFileExtension( $image->mime() );
+
+				$fileName = uniqid();
+
+				$image->save("img/uploads/original/$fileName$fileExtension");
+
+				$image->resize(400, null, function ($constraint) {
+				     $constraint->aspectRatio();
+				});
+
+				$image->save("img/uploads/recipes/$fileName$fileExtension");
+
+				//Delete old images
+				//They are wasting space
+				$sql = "SELECT image FROM recipe_database WHERE recipe_id = $recipeID
+				 ";
+
+				$result = $this->dbc->query($sql);
+
+
+				 //Extract the data
+				$result = $result->fetch_assoc();
+				//Get the image name
+				$imageName = $result['image'];
+
+				unlink('img/uploads/original/$imageName');
+				unlink('img/uploads/recipes/$imageName');
+
+			} 
 
 				//Filter the data
 				$title = $this->dbc->real_escape_string($title);
 				$desc = $this->dbc->real_escape_string($desc);
 				$method = $this->dbc->real_escape_string($method);
-				$recipeID = $this->dbc->real_escape_string($_GET['id']);
+
+				$userID = $_SESSION['user_id'];
 
 				//Prepare the SQL
 				$sql = "UPDATE recipe_database
 						SET title = '$title',
 							description = '$desc',
+							image = '$image',
 							method = '$method'
 						WHERE recipe_id = '$recipeID
 						AND user_id = $userID'";
@@ -103,32 +187,46 @@ class EditPostController extends PageController{
 			
 				$this->dbc->query($sql);
 
+				if( $this->dbc->affected_rows == 0 ) {
+					$this->data['updateError'] = '<p>Sorry, nothing changed</p>';
+				}else{
 				//Redirect the user to the post page
 				header("Location: index.php?page=fullrecipepage&recipe_id=$recipeID");
-
-				//what if user 
-				if( isset($_POST['edit-post']) ){
-
-				$this->data['post'] = $_POST;
-
-				//Use the original
-				$result = $result->fetch_assoc();
-
-				$this->data['originalTitle'] = $result['title'];
-				
-					
-				} else{
-					//use the original title
-					$result = $result->fetch_assoc();
-
-					$this->data['post'] = $result;
-
-					$this->data['originalTitle'] = $result['title'];
-				}	
+				}
 			}
+	
+		}
+
+			private function getFileExtension( $mimeType ) {
+
+			switch($mimeType) {
+
+			case 'image/png':
+				return '.png';
+			break;
+
+			case 'image/gif':
+				return '.gif';
+			break;
+
+			case 'image/jpeg':
+				return '.jpg';
+			break;
+
+			case 'image/bmp':
+				return '.bmp';
+			break;
+
+			case 'image/tiff':
+				return '.tif';
+			break;
+
+		}
 
 	}
-}
+
+	}
+
 
 
 

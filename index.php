@@ -96,8 +96,8 @@ switch($page) {
 	break;
 
 	default:
-		$plates = new League\Plates\Engine('app/templates');
-		echo $plates->render('error404');
+		require 'app/controllers/Error404Controller.php';
+		$controller = new Error404Controller ($dbc);
 	break;
 }
 

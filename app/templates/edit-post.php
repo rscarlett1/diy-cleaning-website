@@ -52,6 +52,7 @@
 					
 					<div class="form-group">
 					<input class="btn btn-default" type="submit" name="edit-post" value="Submit">
+					<?= isset($updateError) ? $updateError : '' ?>
 					
 					</div>
 				</form>
