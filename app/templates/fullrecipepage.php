@@ -31,22 +31,27 @@
                 <li><strong>Posted By: </strong><?= htmlentities($fullrecipepage['first_name'].' '.$fullrecipepage['last_name']) ?></li>
                 <?php
 
-                  if( $_SESSION['user_id'] == $fullrecipepage['user_id'] ){
-                    // You own post!
-                  ?>
+                  if( isset($_SESSION['user_id']) ) {
+
+                    if( $_SESSION['user_id'] == $fullrecipepage['user_id'] ){
+                      // You own post!
+                    ?>
             <li>
               <a href="index.php?page=edit-post&id=<?= $_GET['recipe_id'] ?>">Edit</a>
             </li>
-            <li>
-              <button id="delete-post">Delete</button>
-              <div id="delete-post-options">
-                <a href="<?= $_SERVER['REQUEST_URI'] ?>&delete">Yes</a> / <button>No</button>
-              </div>
-            </li>
-                  <?php
-                }
 
+            <li>
+              <button class="delete-post">Delete</button></a>
               
+                <div class="delete-post-options">
+                  <a href= "<?= $_SERVER['REQUEST_URI'] ?>&delete">Yes</a> / <button>No</button>
+                </div>
+
+            </li>
+                    <?php
+                  }
+
+              }
 
             ?>
           </ul>
@@ -75,7 +80,7 @@
                 <?= isset($commentMessage) ? $commentNameMessage : '' ?>
               
                 <div>
-                  <input type="button" class="btn btn-default" type="submit" name="new-comment" value="Submit">
+                  <input class="btn btn-default" type="submit" name="new-comment" value="Submit">
                 </div>
 
                 <?= isset($recipeCommentMessage) ? $recipeCommentMessage : '' ?>
@@ -95,20 +100,56 @@
                 if( isset($_SESSION['user_id']) ) {
 
                 // Does this user own the comment?
-                if( $_SESSION['user_id'] == $comment['user_id'] ){
-                  // Yes! This user owns the comment!
-                  echo 'Delete';
-                  echo '<a href="index.php?page=edit-comments&id='.$comment['id'].'">Edit</a>';
-                }
+                if( $_SESSION['user_id'] == $comment['user_id'] || $_SESSION['privilege'] == 'admin' ){
+                  
+                  ?>
+                    <li>
+                      <a href="index.php?page=edit-comments&id=<?= $_GET['recipe_id'] ?>">Edit</a>
+                    </li>
+
+                    <li>
+                      <button class="delete-post">Delete</button></a>
+                      
+                        <div class="delete-post-options">
+                          <a href= "<?= $_SERVER['REQUEST_URI'] ?>&delete">Yes</a> / <button>No</button>
+                        </div>
+
+                    </li>
+                    <?php
+
+                  }
 
                 }
 
               ?>
+
             </article>
                 
                 <?php endforeach ?>
             </div>
         </div> 
     </div>
-</section> 
+</section>
+
+<script>
+  
+
+  // Wait for all the stuff to be ready
+  $(document).ready(function(){
+
+
+    //When the user clicks on the delete button
+    $('.delete-post, .delete-post-options button').click(function(){
+
+     // Toggle the visibility of the controls
+     $('.delete-post-options').toggle();
+
+    });
+
+  });
+
+</script>
+
+
+
 

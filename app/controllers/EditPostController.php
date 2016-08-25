@@ -43,8 +43,9 @@ class EditPostController extends PageController{
 		//Prepare the query
 		$sql = "SELECT user_id, title, description, method, image 
 				FROM recipe_database 
-				WHERE recipe_id = $recipeID
-				AND user_id = $userID";
+				WHERE recipe_id = $recipeID ;"
+		if($_SESSION['privilege'] != 'admin'){		
+			$sql .= "AND user_id = $userID";
 
 		$result = $this->dbc->query($sql);
 
@@ -183,8 +184,12 @@ class EditPostController extends PageController{
 							description = '$desc',
 							image = '$imageName',
 							method = '$method'
-						WHERE recipe_id = '$recipeID
-						AND user_id = $userID'";
+						WHERE recipe_id = '$recipeID ";
+						
+				if($_SESSION['privilege'] != 'admin') {
+					$sql .= "AND user_id = $userID'";
+				}
+						
 
 			
 				$this->dbc->query($sql);

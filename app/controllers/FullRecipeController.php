@@ -10,6 +10,13 @@ class FullRecipeController extends PageController{
 		
 		$this->dbc = $dbc;
 
+		//Does the user want to delete this post?
+		if( isset($_GET['delete']) ) {
+			$this->deletePost();
+		}
+
+		
+
 		//Did the user add a comment
 		if( isset( $_POST['new-comment'])){
 			$this->processNewComment();
@@ -133,6 +140,60 @@ class FullRecipeController extends PageController{
 			}
 		}
 	}
+
+
+	private function deletePost() {
+
+		// If user is not logged in
+		if( !isset($_SESSION['user_id']) ) {
+			return;
+		}
+
+		// Make sure the user owns this post
+		$recipeID = $this->dbc->real_escape_string($_GET['recipe_id']);
+		$userID = $_SESSION['user_id'];
+		$privilege = $_SESSION['privilege'];
+
+		// Delete the image first
+		$sql = "SELECT image
+				FROM recipe_database
+				WHERE recipe_id = $recipeID";
+
+		// If the user is not an admin
+		if( $privilege != 'admin' ) {
+			$sql .= " AND user_id = $userID";
+		}
+
+		// Run this query
+		$result = $this->dbc->query($sql);
+
+		// If the query failed
+		// Either post doesn't exist, or you don't own the post
+		if( !$result || $result->num_rows == 0 ) {
+			return;
+		}
+
+		$result = $result->fetch_assoc();
+
+		$filename = $result['image'];
+
+		unlink("img/uploads/original/$filename");
+		unlink("img/uploads/recipes/$filename");
+
+
+		// Prepare the SQL
+		$sql = "DELETE FROM recipe_database
+				WHERE recipe_id = $recipeID";
+
+		// Run the query
+		$this->dbc->query($sql);
+
+		// Redirect the user back to stream
+		// This post is dead :(
+		header('Location: index.php?page=what-to-clean');
+		die();
+		
+		}
 
 }
 
