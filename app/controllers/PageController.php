@@ -35,10 +35,10 @@ abstract class PageController{
 	//logoff has to be on all pages
 
 		// If you are not logged in
-		if( isset($_SESSION['user_id']) ) {
+		//if( isset($_SESSION['user_id']) ) {
 			// Redirect the user to the login page
-			header('Location: index.php?page=home');
-		}
+			//header('Location: index.php?page=home');
+		//}
 	
 	}
 

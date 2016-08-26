@@ -15,8 +15,12 @@ class FullRecipeController extends PageController{
 			$this->deletePost();
 		}
 
-		
+		//Does the user want to delete this post?
+		if( isset($_GET['deleteComment']) ) {
+			$this->Deletecomment();
+		}
 
+		
 		//Did the user add a comment
 		if( isset( $_POST['new-comment'])){
 			$this->processNewComment();
@@ -193,9 +197,58 @@ class FullRecipeController extends PageController{
 		header('Location: index.php?page=what-to-clean');
 		die();
 		
+	}
+
+	private function Deletecomment(){
+
+		//If the user is logged in
+		if( !isset($_SESSION['user_id']) ) {
+			return;
 		}
 
+		// Make sure the user owns this comment
+		
+		$recipeID = $this->dbc->real_escape_string($_GET['recipe_id']);
+		$commentID = $this->dbc->real_escape_string($_GET['commentid']);
+		$userID = $_SESSION['user_id'];
+		$privilege = $_SESSION['privilege'];
+
+		$sql = "SELECT comment, id, comments.user_id, recipe_id
+				FROM comments
+				WHERE recipe_id = $recipeID
+				AND id = $commentID
+				AND user_id = $userID";
+
+		die ($sql);
+		// If the user is not an admin
+		//if( $privilege != 'admin' ) {
+			//$sql .= " AND user_id = $userID";
+		//}
+
+		$result = $this->dbc->query($sql);
+
+		// If the query failed
+		// Either post doesn't exist, or you don't own the post
+		if( !$result || $result->num_rows == 0 ) {
+			return;
+		}
+
+		// Prepare the SQL
+		$sql = "DELETE FROM comments
+				WHERE comment_id = $commentID";
+
+		// // If the user is not an admin
+		// if( $privilege != 'admin' ) {
+		// 	$sql .= " AND user_id = $userID";
+		// }
+				
+				
+	}
+
+
+
 }
+
 
 
 

@@ -1,6 +1,6 @@
 
 <div class="container">
-	<?php if(!isset($_SESSION['id'])): ?>
+	
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="navbar">
@@ -32,5 +32,5 @@
 		</div>   	      
 	</div>
 </div>
-	<?php endif; ?>
+	
 </div>

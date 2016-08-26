@@ -111,7 +111,7 @@
                       <button class="delete-post">Delete</button></a>
                       
                         <div class="delete-post-options">
-                          <a href= "<?= $_SERVER['REQUEST_URI'] ?>&delete">Yes</a> / <button>No</button>
+                          <a href= "<?= $_SERVER['REQUEST_URI'] ?>&deleteComment&commentid=<?=$comment['id']?>">Yes</a> / <button>No</button>
                         </div>
 
                     </li>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 25, 2016 at 02:32 am
+-- Generation Time: Aug 26, 2016 at 02:03 am
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -33,14 +33,14 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `recipe_id` int(10) unsigned NOT NULL,
   `ceated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `comment`, `user_id`, `recipe_id`, `ceated_at`, `updated_at`) VALUES
-(26, 'hi there', 3, 32, '2016-08-25 00:22:29', '2016-08-25 00:22:29');
+(29, 'dgdgdgdgdgdgdfg', 3, 38, '2016-08-25 23:32:34', '2016-08-25 23:32:34');
 
 -- --------------------------------------------------------
 
@@ -57,16 +57,14 @@ CREATE TABLE IF NOT EXISTS `recipe_database` (
   `method` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `status` enum('Pending','Approved','Declined','') NOT NULL DEFAULT 'Pending'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `recipe_database`
 --
 
 INSERT INTO `recipe_database` (`recipe_id`, `user_id`, `title`, `description`, `category`, `method`, `image`, `status`) VALUES
-(30, 3, 'cow', 'poo', 'Other', 'head', '57bb7f14cb6cc.jpg', 'Approved'),
-(32, 3, 'hi there', 'fsfsf', 'Kitchen', 'fsfsfs', '57bd0997018a8.jpg', 'Approved'),
-(35, 3, 'Garage Cleaner', 'Garage Cleaner', 'Other', 'Garage Cleaner', '57be0d45a9354.jpg', 'Approved');
+(38, 3, 'test', 'trfafasfeawefwaeg', 'Other', 'rqrrdascScS', '57bf8008ce0d5.jpg', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -123,12 +121,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `recipe_database`
 --
 ALTER TABLE `recipe_database`
-MODIFY `recipe_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+MODIFY `recipe_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `users`
 --
